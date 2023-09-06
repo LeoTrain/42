@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 19:53:01 by lbertona          #+#    #+#             */
-/*   Updated: 2023/09/06 06:02:38 by lbertona         ###   ########.fr       */
+/*   Created: 2023/09/06 05:43:00 by lbertona          #+#    #+#             */
+/*   Updated: 2023/09/06 06:05:10 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
+	size_t	r_index;
 	size_t	index;
 
-	if (!dst && !src)
-		return (NULL);
 	index = 0;
-	while (index < n)
+	r_index = 0;
+	while (src[r_index])
+		r_index++;
+	if (dstsize == 0)
+		return (r_index);
+	while (src[index] && index < (dstsize - 1))
 	{
-		((unsigned char *)dst)[index] = ((unsigned char *)src)[index];
+		dst[index] = src[index];
 		index++;
 	}
-	return (dst);
+	dst[index] = '\0';
+	return (r_index);
 }
