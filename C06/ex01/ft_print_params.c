@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:40:41 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/08 15:06:50 by lbertona         ###   ########.fr       */
+/*   Created: 2023/11/08 14:46:07 by lbertona          #+#    #+#             */
+/*   Updated: 2023/11/08 15:06:13 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_pustr(char *str)
+void	ft_putstr(char *str)
 {
 	while (*str)
 		ft_putchar(*str++);
@@ -25,8 +25,14 @@ void	ft_pustr(char *str)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	ft_pustr(argv[0]);
-	ft_putchar('\n');
+	int	index;
+
+	index = 1;
+	while (index < argc)
+	{
+		ft_putstr(argv[index]);
+		ft_putchar('\n');
+		index++;
+	}
 	return (0);
 }
