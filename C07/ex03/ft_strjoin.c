@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:23:36 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/09 11:55:13 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:03:37 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,65 +16,71 @@
 int	ft_strlen(char *str)
 {
 	int	index;
-	
+
 	index = 0;
-	while(*str)
-	{
+	while (str[index] != '\0')
 		index++;
-		str++;
-	}
 	return (index);
+}
+
+int	ft_result_size(char **strs, int size, char *sep)
+{
+	int	index;
+	int	result_size;
+	int	sep_size;
+
+	index = 0;
+	result_size = 0;
+	sep_size = ft_strlen(sep);
+	while (strs[index] != NULL && index < size)
+	{
+		result_size += ft_strlen(strs[index]);
+		if (index < size - 1)
+			result_size += sep_size;
+		index++;
+	}
+	return (result_size);
+}
+
+char	*ft_real_str_join(int size, char **strs, char *sep, char *result)
+{
+	int	index;
+	int	pos;
+	int	temp;
+
+	pos = 0;
+	index = 0;
+	while (index < size && strs[index] != NULL)
+	{
+		temp = 0;
+		while (strs[index][temp] != '\0')
+			result[pos++] = strs[index][temp++];
+		if (index < size - 1)
+		{
+			temp = 0;
+			while (sep[temp] != '\0')
+				result[pos++] = sep[temp++];
+		}
+		index++;
+	}
+	return (result);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*result;
-	int		index;
-	int		index_strs;
 	int		result_size;
-	int		temp;
-	int		final;
-	
-	index = 0;
-	result_size = 0;
-	while(index < size)
-	{
-		if (strs[index])
-		{
-			result_size += ft_strlen(strs[index]);
-			if (index < size - 1)
-				result_size += ft_strlen(sep);
-		}
-		index++;
-	}
+
+	result_size = ft_result_size(strs, size, sep);
 	result = malloc(result_size + 1);
-	
-	index = 0;
-	temp = 0;
-	index_strs = 0;
-	final = 0;
-	while (result[final])
-	{
-		index_strs = 0;
-		while (strs[temp][index_strs])
-		{
-			result[index_strs + final] = strs[temp][index_strs];
-			index_strs++;
-		}
-		index = 0;
-		while (sep[index])
-		{
-			result[index + index_strs + final] = sep[index];
-			index++;
-		}
-		final = index_strs + index;
-		temp++;
-	}
-	result[final] = '\0';
+	if (!result)
+		return (NULL);
+	ft_real_str_join(size, strs, sep, result);
+	result[result_size + 1] = '\0';
 	return (result);
 }
 
-
+/*
 #include <unistd.h>
 
 void	ft_putstr(char *str)
@@ -86,17 +92,22 @@ void	ft_putstr(char *str)
 int main()
 {
 	char	sep[] = " ";
-	char	*string[4];
-	int 	size = 4;
+	char	*string[9];
+	int 	size = 9	;
 	
 	string[0] = "Hello";
 	string[1] = "World";
 	string[2] = "I'm";
 	string[3] = "Leo";
+	string[4] = "Heiter";
+	string[5] = "Gesund";
+	string[6] = "Liebevoll";
+	string[7] = "Retzeln";
+	string[8] = "Kochen";
 	
 	ft_putstr("all strings at the start = ");
 	int index = 0;
-	while (index < 4)
+	while (index < 9)
 	{
 		ft_putstr(string[index]);
 		index++;
@@ -104,6 +115,8 @@ int main()
 	write(1, "\n", 1);
 
 	ft_putstr("all strings at the end = ");
-	ft_putstr(ft_strjoin(size, string, sep));
+	char *result = ft_strjoin(size, string, sep);
+	ft_putstr(result);
 	write(1, "\n", 1);
 }
+*/
