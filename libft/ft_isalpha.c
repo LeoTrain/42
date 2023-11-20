@@ -5,16 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 17:09:17 by lbertona          #+#    #+#             */
-/*   Updated: 2023/08/27 19:58:09 by lbertona         ###   ########.fr       */
+/*   Created: 2023/11/20 17:04:51 by lbertona          #+#    #+#             */
+/*   Updated: 2023/11/20 17:05:01 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_islapha(int c)
+int	ft_isalpha(int c)
 {
-	if ((c >= 101 && c <= 132) || (c >= 141 && c <= 172))
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);
-	return (0);
+	else
+		return (0);
 }
