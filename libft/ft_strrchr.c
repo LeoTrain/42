@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 21:22:32 by lbertona          #+#    #+#             */
-/*   Updated: 2023/09/26 21:57:02 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:54:18 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,22 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	index;
+	int		index;
+	char	charptr;
+	char	*chars;
 
+	chars = (char *)s;
+	charptr = (char)c;
 	if (!s)
 		return (NULL);
 	index = ft_strlen(s);
-	while (s[index])
+	while (index > 0)
 	{
-		if (s[index] == (char)c)
-			return ((char *)(s + index));
+		if (chars[index] == charptr)
+			return (&chars[index]);
 		index--;
 	}
-	if (s[index] == (char)c)
-		return ((char *)(s + index));
+	if (chars[index] == charptr)
+		return (&chars[index]);
 	return (NULL);
-}
-
-#include <stdio.h>
-#include <string.h> 
-
-int main()
-{
-    const char    s[] = "Leonardo greux gris est grand 123";
-    int         c = 'g';
-    
-    printf("%s\n", s);
-    printf("%d\n", c);
-    printf("\n");
-	printf("%s\n", strrchr(s, c));
-    printf("%s\n", ft_strrchr(s, c));
 }
