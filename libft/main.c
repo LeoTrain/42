@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:07:43 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/20 17:14:33 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:19:14 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 int	main(void)
 {
+	printf("%d\n", ft_isalnum('a'));
+	printf("%d\n", ft_isalnum('7'));
+	printf("%d\n", ft_isalnum('G'));
+	printf("%d\n", ft_isalnum('\n'));
+	printf("%d\n", ft_isalnum('@'));
 	return (0);
 }
 
@@ -26,3 +31,4 @@ int	main(void)
 	//printf("%d\n", ft_isdigit('a'));
 	//printf("%d\n", ft_isdigit('7'));
 	//printf("%d\n", ft_isdigit('Y'));
+	//ISALNUM
