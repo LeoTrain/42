@@ -6,20 +6,19 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:07:43 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/20 22:40:11 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:26:03 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 #include <stdio.h>
-
-int	main(void)
+ 
+#define  BUF_SIZE  20
+ 
+int main(void)
 {
-	char b[10];
-	ft_memset(b, 'c', 5);
-	ft_memset(b+5, 'd', 5);
-	printf("%s\n", b);
-	return (0);
+
 }
 
 	//ISALPHA
@@ -37,3 +36,15 @@ int	main(void)
 	//printf("%d\n", ft_isalnum('\n'));
 	//printf("%d\n", ft_isalnum('@'));
 	//MEMSET
+	//char buffer[BUF_SIZE + 1];
+	//memset(buffer, 0, 21);
+    //memset(buffer,'A', 10);
+    //printf("\nBuffer contents: %s\n", buffer);
+    //memset(buffer+10, 'B', 10);
+    //printf("\nBuffer contents: %s\n", buffer);
+    //char buffer_test[BUF_SIZE + 1];
+    //ft_memset(buffer_test, 0, 21);
+    //ft_memset(buffer_test, 'A', 10);
+    //printf("\nBuffer contents: %s\n", buffer_test);
+    //memset(buffer_test+10, 'B', 10);
+    //printf("\nBuffer contents: %s\n", buffer_test);
