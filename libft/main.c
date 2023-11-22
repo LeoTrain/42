@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:07:43 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/21 13:26:03 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:39:38 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
  
 int main(void)
 {
-
+	char mem[5];
+	ft_memset(mem, 'e', 5);
+	ft_bzero(mem, 5);
+	printf("%s\n", mem);
 }
 
 	//ISALPHA
