@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:07:43 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/22 11:39:38 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/22 11:58:19 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
  
 int main(void)
 {
-	char mem[5];
-	ft_memset(mem, 'e', 5);
-	ft_bzero(mem, 5);
-	printf("%s\n", mem);
+	char s[] = "abcdefghijklmnopqrstuvwxyz";
+	char d[27];
+	
+	ft_memcpy(d, s, 27);
+	printf("%s\n", d);
+	return (0);
 }
 
 	//ISALPHA
@@ -51,3 +53,9 @@ int main(void)
     //printf("\nBuffer contents: %s\n", buffer_test);
     //memset(buffer_test+10, 'B', 10);
     //printf("\nBuffer contents: %s\n", buffer_test);
+	
+	//BZERO
+	//char mem[5];
+	//ft_memset(mem, 'e', 5);
+	//ft_bzero(mem, 5);
+	//printf("%s\n", mem);
