@@ -6,7 +6,7 @@
 /*   By: lbertona <lbertona@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:04:17 by lbertona          #+#    #+#             */
-/*   Updated: 2023/11/28 21:04:08 by lbertona         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:14:21 by lbertona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ size_t	ft_strlcpy(
 size_t	ft_strlcat(
 			char *restrict dst, const char *restrict src, size_t dstsize);
 int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 #endif
