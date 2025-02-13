@@ -6,6 +6,9 @@ int	*ft_range(int min, int max)
 	int	i;
 	int	*tab;
 
+	if (min >= max)
+		return (0);
+
 	size = max - min;
 	tab = malloc(4 * size);
 	i = 0;
