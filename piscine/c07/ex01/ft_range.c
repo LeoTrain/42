@@ -8,14 +8,14 @@ int	*ft_range(int min, int max)
 
 	if (min >= max)
 		return (0);
-
 	size = max - min;
-	tab = malloc(4 * size);
+	tab = malloc(sizeof(int) * size);
+	if (!tab)
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-		tab[i] = min;
-		min++;
+		tab[i] = min + i;
 		i++;
 	}
 	return (tab);
