@@ -36,9 +36,37 @@ void test_isprint()
     printf("ISPRINT END\n");
 }
 
+void test_isascii()
+{
+    printf("\nISASCII START\n");
+    printf("TEST 1: %s\n", ft_isascii('a') == 1 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_isascii('A') == 1 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_isascii('z') == 1 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_isascii('9') == 1 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_isascii(' ') == 1 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_isascii(31) == 1 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_isascii(127) == 1 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_isascii(128) == 0 ? "OK" : "KO");
+    printf("ISASCII END\n");
+}
+
+void test_isalnum()
+{
+    printf("\nISALNUM START\n");
+    printf("TEST 1: %s\n", ft_isalnum('a') == 1 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_isalnum('A') == 1 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_isalnum('z') == 1 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_isalnum('9') == 1 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_isalnum(' ') == 0 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_isalnum(31) == 0 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_isalnum(127) == 0 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_isalnum(128) == 0 ? "OK" : "KO");
+    printf("ISALNUM END\n");
+}
+
 
 int main()
 {
-    test_isprint();
+    test_isalnum();
     return 0;
 }
