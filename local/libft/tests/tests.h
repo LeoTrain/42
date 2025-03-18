@@ -28,6 +28,8 @@ void    test_isprint(void);
 void    test_isascii(void);
 void    test_isalnum(void);
 void    test_atoi(void);
+void    test_strcmp(void);
+void    test_strncmp(void);
 void    display_int_test(t_test_int *tests, int amount, char *name);
 void    display_str_test(t_test_str *tests, int amount, char *name);
 void    init_str_test(t_test_str *tests, int position, char *description, char *result, char *expected, int passed);

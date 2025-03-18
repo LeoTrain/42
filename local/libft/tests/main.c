@@ -319,16 +319,16 @@
 // }
 
 
-// void    run_tests()
-// {
-//     test_tolower();
-//     test_toupper();
-//     test_isprint();
-//     test_isascii();
-//     test_isalnum();
-//     test_atoi();
-//     test_strcmp();
-//     test_strncmp();
+void    run_tests()
+{
+    test_tolower();
+    test_toupper();
+    test_isprint();
+    test_isascii();
+    test_isalnum();
+    test_atoi();
+    test_strcmp();
+    test_strncmp();
 //     test_strlen();
 //     test_strdup();
 //     test_strcpy();
@@ -346,15 +346,10 @@
 //     test_memccpy();
 //     test_memmove();
 //     test_memchr();
-// }
+}
 
 int main()
 {
-    test_tolower();
-    test_toupper();
-    test_isprint();
-    test_isascii();
-    test_isalnum();
-    test_atoi();
+    run_tests();
     return 0;
 }
