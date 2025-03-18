@@ -106,7 +106,7 @@ void test_strncmp()
     printf("TEST 8: %s\n", ft_strncmp("abc", "ab", 3) == 99 ? "OK" : "KO");
     printf("TEST 9: %s\n", ft_strncmp("abc", "abcd", 4) == -100 ? "OK" : "KO");
     printf("TEST 10: %s\n", ft_strncmp("abcd", "abc", 4) == 100 ? "OK" : "KO");
-    printf("\nSTRNCMP END\n");
+    printf("STRNCMP END\n");
 }
 
 void    test_strlen()
@@ -136,11 +136,27 @@ void    test_strdup()
     printf("TEST 3: %s\n", ft_strcmp(test3, "abc de") == 0 ? "OK" : "KO");
     printf("TEST 4: %s\n", ft_strcmp(test4, "abc de f") == 0 ? "OK" : "KO");
     printf("TEST 5: %s\n", ft_strcmp(test5, "abc de fg") == 0 ? "OK" : "KO");
-    printf("\nSTRDUP END\n");
+    printf("STRDUP END\n");
+}
+
+void    test_strcpy()
+{
+    char test1[4];
+    char test2[5];
+    char test3[7];
+    char test4[8];
+    char test5[9];
+    printf("\nSTRCPY START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strcpy(test1, "abc"), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strcpy(test2, "abcd"), "abcd") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strcpy(test3, "abc de"), "abc de") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strcpy(test4, "abc de f"), "abc de f") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strcpy(test5, "abc de fg"), "abc de fg") == 0 ? "OK" : "KO");
+    printf("STRCPY END\n");
 }
 
 int main()
 {
-    test_strdup();
+    test_strcpy();
     return 0;
 }
