@@ -275,6 +275,26 @@ void    test_memset()
     display_str_tests(tests, 5, "MEMSET");
 }
 
+void    safe_bzero_test(t_test_str *tests, int pos, char *desc, int len)
+{
+    void *tmp1 = malloc(len);
+    void *tmp2 = malloc(len);
+    bzero(tmp1, len);
+    ft_bzero(tmp2, len);
+    init_str_tests(tests, pos, desc, tmp1, tmp2, memcmp(tmp1, tmp2, len) == 0);
+}
+
+void    test_bzero()
+{
+    t_test_str tests[5];
+    safe_bzero_test(tests, 'a', "Test 1: 'abc' to 'abc'", 3);
+    safe_bzero_test(tests, 'b', "Test 2: 'abcd' to 'abcd'", 4);
+    safe_bzero_test(tests, 'c', "Test 3: 'abc de' to 'abc de'", 6);
+    safe_bzero_test(tests, 'd', "Test 4: 'abc de f' to 'abc de f'", 8);
+    safe_bzero_test(tests, 'e', "Test 5: 'abc de fg' to 'abc de fg'", 9);
+    display_str_tests(tests, 5, "BZERO");
+}
+
 void    run_tests()
 {
     test_tolower();
@@ -297,6 +317,7 @@ void    run_tests()
     test_strstr();
     test_strnstr();
     test_memset();
+    test_bzero();
 }
 
 int main()
