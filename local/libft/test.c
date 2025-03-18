@@ -187,14 +187,14 @@ void    test_strncat()
     display_str_tests(tests, 5, "STRNCAT");
 }
 
-void    safe_strlcat_test(t_test_str *test, int pos, char *desc, char *s1, char *s2, int n)
+void    safe_strlcat_test(t_test_str *test, int pos, char *desc, char *s1, char *s2, int size)
 {
     char *tmp1 = malloc(strlen(s1) + strlen(s2) + 1);
     char *tmp2 = malloc(strlen(s1) + strlen(s2) + 1);
     strcpy(tmp1, s1);
     strcpy(tmp2, s1);
-    ft_strlcat(tmp1, s2, n);
-    strncat(tmp2, s2, n);
+    ft_strlcat(tmp1, s2, size);
+    strlcat(tmp2, s2, size);
     init_str_tests(test, pos, desc, tmp1, tmp2, strcmp(tmp1, tmp2) == 0);
 }
 
@@ -211,98 +211,68 @@ void    test_strlcat()
 
 void    test_strchr()
 {
-    printf("\nSTRCHR START\n");
-    printf("TEST 1: %s\n", ft_strcmp(ft_strchr("abc", 'a'), "abc") == 0 ? "OK" : "KO");
-    printf("TEST 2: %s\n", ft_strcmp(ft_strchr("abc", 'b'), "bc") == 0 ? "OK" : "KO");
-    printf("TEST 3: %s\n", ft_strcmp(ft_strchr("abc", 'c'), "c") == 0 ? "OK" : "KO");
-    printf("TEST 4: %s\n", ft_strcmp(ft_strchr("abc", 'd'), "") == 0 ? "OK" : "KO");
-    printf("TEST 5: %s\n", ft_strcmp(ft_strchr("abc def ghi", 'e'), "ef ghi") == 0 ? "OK" : "KO");
-    printf("STRCHR END\n");
+    t_test_str tests[5];
+    init_str_tests(tests, 0, "Test 1: 'abc' to 'abc'", ft_strchr("abc", 'a'), strchr("abc", 'a'), ft_strcmp(ft_strchr("abc", 'a'), strchr("abc", 'a')) == 0);
+    init_str_tests(tests, 1, "Test 2: 'abcba' to 'ba'", ft_strchr("abcba", 'b'), strchr("abcba", 'b'), ft_strcmp(ft_strchr("abcba", 'b'), strchr("abcba", 'b')) == 0);
+    init_str_tests(tests, 2, "Test 3: 'abc' to 'c'", ft_strchr("abc", 'c'), strchr("abc", 'c'), ft_strcmp(ft_strchr("abc", 'c'), strchr("abc", 'c')) == 0);
+    init_str_tests(tests, 3, "Test 4: 'abcd bef' to 'd bef'", ft_strchr("abcd bef", 'd'), strchr("abcd bef", 'd'), ft_strcmp(ft_strchr("abcd bef", 'd'), strchr("abcd bef", 'd')) == 0);
+    init_str_tests(tests, 4, "Test 5: 'abc def ghi' to 'ef ghi'", ft_strchr("abc def ghi", 'e'), strchr("abc def ghi", 'e'), ft_strcmp(ft_strchr("abc def ghi", 'e'), strchr("abc def ghi", 'e')) == 0);
+    display_str_tests(tests, 5, "STRCHR");
 }
 
 void    test_strrchr()
 {
-    printf("\nSTRRCHR START\n");
-    printf("TEST 1: %s\n", ft_strcmp(ft_strrchr("abc", 'a'), "abc") == 0 ? "OK" : "KO");
-    printf("TEST 2: %s\n", ft_strcmp(ft_strrchr("abcba", 'b'), "ba") == 0 ? "OK" : "KO");
-    printf("TEST 3: %s\n", ft_strcmp(ft_strrchr("abc", 'c'), "c") == 0 ? "OK" : "KO");
-    printf("TEST 4: %s\n", ft_strcmp(ft_strrchr("abcd bef", 'd'), "d bef") == 0 ? "OK" : "KO");
-    printf("TEST 5: %s\n", ft_strcmp(ft_strrchr("abc def ghi", 'e'), "ef ghi") == 0 ? "OK" : "KO");
-    printf("STRRCHR END\n");
+    t_test_str tests[5];
+    init_str_tests(tests, 0, "Test 1: 'abc' to 'abc'", ft_strrchr("abc", 'a'), strrchr("abc", 'a'), ft_strcmp(ft_strrchr("abc", 'a'), strrchr("abc", 'a')) == 0);
+    init_str_tests(tests, 1, "Test 2: 'abcba' to 'ba'", ft_strrchr("abcba", 'b'), strrchr("abcba", 'b'), ft_strcmp(ft_strrchr("abcba", 'b'), strrchr("abcba", 'b')) == 0);
+    init_str_tests(tests, 2, "Test 3: 'abc' to 'c'", ft_strrchr("abc", 'c'), strrchr("abc", 'c'), ft_strcmp(ft_strrchr("abc", 'c'), strrchr("abc", 'c')) == 0);
+    init_str_tests(tests, 3, "Test 4: 'abcd bef' to 'd bef'", ft_strrchr("abcd bef", 'd'), strrchr("abcd bef", 'd'), ft_strcmp(ft_strrchr("abcd bef", 'd'), strrchr("abcd bef", 'd')) == 0);
+    init_str_tests(tests, 4, "Test 5: 'abc def ghi' to 'ef ghi'", ft_strrchr("abc def ghi", 'e'), strrchr("abc def ghi", 'e'), ft_strcmp(ft_strrchr("abc def ghi", 'e'), strrchr("abc def ghi", 'e')) == 0);
+    display_str_tests(tests, 5, "STRRCHR");
 }
 
 void    test_strstr()
 {
-    printf("\nSTRSTR START\n");
-    printf("TEST 1: %s\n", ft_strcmp(ft_strstr("abc", "a"), "abc") == 0 ? "OK" : "KO");
-    printf("TEST 2: %s\n", ft_strcmp(ft_strstr("abc", "b"), "bc") == 0 ? "OK" : "KO");
-    printf("TEST 3: %s\n", ft_strcmp(ft_strstr("abc", "c"), "c") == 0 ? "OK" : "KO");
-    printf("TEST 4: %s\n", ft_strcmp(ft_strstr("They are great", "rea"), "reat") == 0 ? "OK" : "KO");
-    printf("TEST 5: %s\n", ft_strcmp(ft_strstr("They are great", "are"), "are great") == 0 ? "OK" : "KO");
-    printf("TEST 6: %s\n", ft_strcmp(ft_strstr("They are great", "great"), "great") == 0 ? "OK" : "KO");
-    printf("TEST 7: %s\n", ft_strcmp(ft_strstr("I am a Leonardo ar", "ar"), "ardo ar") == 0 ? "OK" : "KO");
-    printf("STRSTR END\n");
+    t_test_str tests[5];
+    init_str_tests(tests, 0, "Test 1: 'abc' to 'abc'", ft_strstr("abc", "a"), strstr("abc", "a"), ft_strcmp(ft_strstr("abc", "a"), strstr("abc", "a")) == 0);
+    init_str_tests(tests, 1, "Test 2: 'abcba' to 'ba'", ft_strstr("abcba", "b"), strstr("abcba", "b"), ft_strcmp(ft_strstr("abcba", "b"), strstr("abcba", "b")) == 0);
+    init_str_tests(tests, 2, "Test 3: 'abc' to 'c'", ft_strstr("abc", "c"), strstr("abc", "c"), ft_strcmp(ft_strstr("abc", "c"), strstr("abc", "c")) == 0);
+    init_str_tests(tests, 3, "Test 4: 'abcd bef' to 'd bef'", ft_strstr("abcd bef", "d"), strstr("abcd bef", "d"), ft_strcmp(ft_strstr("abcd bef", "d"), strstr("abcd bef", "d")) == 0);
+    init_str_tests(tests, 4, "Test 5: 'abc def ghi' to 'ef ghi'", ft_strstr("abc def ghi", "e"), strstr("abc def ghi", "e"), ft_strcmp(ft_strstr("abc def ghi", "e"), strstr("abc def ghi", "e")) == 0);
+    display_str_tests(tests, 5, "STRSTR");
 }
 
 void    test_strnstr()
 {
-    printf("\nSTRNSTR START\n");
-    printf("TEST 1: %s\n", ft_strcmp(ft_strnstr("abc", "a", 3), "abc") == 0 ? "OK" : "KO");
-    printf("TEST 2: %s\n", ft_strcmp(ft_strnstr("abc", "b", 3), "bc") == 0 ? "OK" : "KO");
-    printf("TEST 3: %s\n", ft_strcmp(ft_strnstr("abc", "c", 3), "c") == 0 ? "OK" : "KO");
-    printf("TEST 4: %s\n", ft_strcmp(ft_strnstr("They are great", "rea", 14), "reat") == 0 ? "OK" : "KO");
-    printf("TEST 5: %s\n", ft_strcmp(ft_strnstr("They are great", "rea", 9), "") == 0 ? "OK" : "KO");
-    printf("TEST 6: %s\n", ft_strcmp(ft_strnstr("They are great", "are", 14), "are great") == 0 ? "OK" : "KO");
-    printf("TEST 7: %s\n", ft_strcmp(ft_strnstr("They are great", "are", 9), "are great") == 0 ? "OK" : "KO");
-    printf("TEST 8: %s\n", ft_strcmp(ft_strnstr("They are great", "great", 14), "great") == 0 ? "OK" : "KO");
-    printf("STRNSTR END\n");
+    t_test_str tests[5];
+    init_str_tests(tests, 0, "Test 1: 'abc' to 'abc'", ft_strnstr("abc", "a", 3), strnstr("abc", "a", 3), ft_strcmp(ft_strnstr("abc", "a", 3), strnstr("abc", "a", 3)) == 0);
+    init_str_tests(tests, 1, "Test 2: 'abcba' to 'ba'", ft_strnstr("abcba", "b", 4), strnstr("abcba", "b", 4), ft_strcmp(ft_strnstr("abcba", "b", 4), strnstr("abcba", "b", 4)) == 0);
+    init_str_tests(tests, 2, "Test 3: 'abc' to 'c'", ft_strnstr("abc", "c", 3), strnstr("abc", "c", 3), ft_strcmp(ft_strnstr("abc", "c", 3), strnstr("abc", "c", 3)) == 0);
+    init_str_tests(tests, 3, "Test 4: 'abcd bef' to 'd bef'", ft_strnstr("abcd bef", "d", 8), strnstr("abcd bef", "d", 8), ft_strcmp(ft_strnstr("abcd bef", "d", 8), strnstr("abcd bef", "d", 8)) == 0);
+    init_str_tests(tests, 4, "Test 5: 'abc def ghi' to 'ef ghi'", ft_strnstr("abc def ghi", "e", 11), strnstr("abc def ghi", "e", 11), ft_strcmp(ft_strnstr("abc def ghi", "e", 11), strnstr("abc def ghi", "e", 11)) == 0);
+    display_str_tests(tests, 5, "STRNSTR");
+}
+
+void    safe_memset_test(t_test_str *test, int pos, char *desc, void *s1, int c, int len)
+{
+    void *tmp1 = malloc(len);
+    void *tmp2 = malloc(len);
+    strcpy(tmp1, s1);
+    strcpy(tmp2, s1);
+    ft_memset(tmp1, c, len);
+    memset(tmp2, c, len);
+    init_str_tests(test, pos, desc, tmp1, tmp2, memcmp(tmp1, tmp2, len) == 0);
 }
 
 void    test_memset()
 {
-    char    test1[4] = "abc";
-    char    test2[5] = "abcd";
-    char    test3[7] = "abc de";
-    char    test4[8] = "abc de f";
-    char    test5[9] = "abc de fg";
-    int    test1Passed;
-    int    test2Passed;
-    int    test3Passed;
-    int    test4Passed;
-    int    test5Passed;
-    char *expected1 = memset(strdup("abc"), 'z', 3);
-    char *expected2 = memset(strdup("abcd"), 'z', 4);
-    char *expected3 = memset(strdup("abc de"), 'z', 6);
-    char *expected4 = memset(strdup("abc de f"), 'a', 7);
-    char *expected5 = memset(strdup("abc de fg"), 'z', 8);
-
-    test1Passed = strcmp(ft_memset(test1, 'z', 3), expected1) == 0;
-    test2Passed = strcmp(ft_memset(test2, 'z', 4), expected2) == 0;
-    test3Passed = strcmp(ft_memset(test3, 'z', 6), expected3) == 0;
-    test4Passed = strcmp(ft_memset(test4, 'a', 7), expected4) == 0;
-    test5Passed = strcmp(ft_memset(test5, 'z', 8), expected5) == 0;
-
-    int allTestsPassed = test1Passed && test2Passed && test3Passed && test4Passed && test5Passed;
-
-    if (allTestsPassed)
-        printf("MEMSET OK\n");
-    else
-    {
-        printf("MEMSET KO\n");
-        int testsPassed[] = {test1Passed, test2Passed, test3Passed, test4Passed, test5Passed};
-        char *recieved[] = {test1, test2, test3, test4, test5};
-        char *expected[] = {expected1, expected2, expected3, expected4, expected5};
-        for (int i = 0; i < 5; i++)
-        {
-            if (!testsPassed[i])
-            {
-                printf("TEST %d FAILED\n", i + 1);
-                printf("   Expected: %s\n", expected[i]);
-                printf("   Recieved: %s\n", recieved[i]);
-            }
-                
-        }
-    }
+    t_test_str tests[5];
+    safe_memset_test(tests, 0, "Test 1: 'abc' to 'abc'", strdup("abc"), 'a', 3);
+    safe_memset_test(tests, 1, "Test 2: 'abcd' to 'abcd'", strdup("abcd"), 'b', 4);
+    safe_memset_test(tests, 2, "Test 3: 'abc de' to 'abc de'", strdup("abc de"), 'c', 6);
+    safe_memset_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", strdup("abc de f"), 'd', 8);
+    safe_memset_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", strdup("abc de fg"), 'e', 9);
+    display_str_tests(tests, 5, "MEMSET");
 }
 
 void    run_tests()
@@ -322,6 +292,11 @@ void    run_tests()
     test_strcat();
     test_strncat();
     test_strlcat();
+    test_strchr();
+    test_strrchr();
+    test_strstr();
+    test_strnstr();
+    test_memset();
 }
 
 int main()
