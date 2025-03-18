@@ -243,8 +243,21 @@ void    test_strrchr()
     printf("STRRCHR END\n");
 }
 
+void    test_strstr()
+{
+    printf("\nSTRSTR START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strstr("abc", "a"), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strstr("abc", "b"), "bc") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strstr("abc", "c"), "c") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strstr("They are great", "rea"), "reat") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strstr("They are great", "are"), "are great") == 0 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strcmp(ft_strstr("They are great", "great"), "great") == 0 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strcmp(ft_strstr("I am a Leonardo ar", "ar"), "ardo ar") == 0 ? "OK" : "KO");
+    printf("STRSTR END\n");
+}
+
 int main()
 {
-    test_strrchr();
+    test_strstr();
     return 0;
 }

@@ -23,5 +23,6 @@ char            *ft_strncat(char *s1, char *s2, unsigned int n);
 unsigned int    ft_strlcat(char *s1, char *s2, unsigned int size);
 char            *ft_strchr(char *str, int c);
 char            *ft_strrchr(char *str, int c);
+char            *ft_strstr(char *str, char *to_find);
 
 #endif
