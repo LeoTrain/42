@@ -221,8 +221,19 @@ void    test_strlcat()
     printf("STRLCAT END\n");
 }
 
+void    test_strchr()
+{
+    printf("\nSTRCHR START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strchr("abc", 'a'), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strchr("abc", 'b'), "bc") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strchr("abc", 'c'), "c") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strchr("abc", 'd'), "") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strchr("abc def ghi", 'e'), "ef ghi") == 0 ? "OK" : "KO");
+    printf("STRCHR END\n");
+}
+
 int main()
 {
-    test_strlcat();
+    test_strchr();
     return 0;
 }
