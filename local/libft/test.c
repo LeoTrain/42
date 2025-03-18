@@ -189,8 +189,24 @@ void    test_strcat()
     printf("STRCAT END\n");
 }
 
+void    test_strncat()
+{
+    char    test1[7] = "abc";
+    char    test2[8] = "abc";
+    char    test3[10] = "";
+    char    test4[11] = "abc de f";
+    char    test5[12] = "abc de fg";
+    printf("\nSTRNCAT START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strncat(test1, "def", 3), "abcdef") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strncat(test2, "defg", 3), "abcdef") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strncat(test3, "fgh", 3), "fgh") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strncat(test4, "ghi", 3), "abc de fghi") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strncat(test5, "hij", 3), "abc de fghij") == 0 ? "OK" : "KO");
+    printf("STRNCAT END\n");
+}
+
 int main()
 {
-    test_strcat();
+    test_strncat();
     return 0;
 }
