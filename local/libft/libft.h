@@ -29,5 +29,6 @@ void            ft_bzero(void *s, int n);
 void            ft_memcpy(char *dest, char *src, unsigned int n);
 void            *ft_memccpy(void *dest, void *src, int c, unsigned int n);
 void            *ft_memmove(void *dest, void *src, unsigned int n);
+void            *ft_memchr(void *s, int c, unsigned int n);
 
 #endif

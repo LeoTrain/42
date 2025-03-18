@@ -39,4 +39,4 @@ echo ""
 
 echo "Cleaning up..."
 make fclean
-rm test
+rm tests

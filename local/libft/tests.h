@@ -32,8 +32,14 @@ void    init_tolower_tests(t_test_int *tests, int position, char *description, i
 void init_str_tests(t_test_str *tests, int position, char *description, char *result, char *expected, int passed)
 {
     tests[position].description = description;
-    tests[position].result = result;
-    tests[position].expected = expected;
+    if (result)
+        tests[position].result = strdup(result);
+    else
+        tests[position].result = NULL;
+    if (expected)
+        tests[position].expected = strdup(expected);
+    else
+        tests[position].expected = NULL;
     tests[position].passed = passed;
 }
 
@@ -76,8 +82,14 @@ void    display_str_tests(t_test_str *tests, int amount, char *name)
             if (!tests[i].passed)
             {
                 printf("%s\n", tests[i].description);
-                printf("   Result: %s\n", tests[i].result);
-                printf("   Expected: %s\n", tests[i].expected);
+                if (tests[i].result)
+                    printf("   Result: %s\n", tests[i].result);
+                else
+                    printf("   Result: NULL\n");
+                if (tests[i].expected)
+                    printf("   Expected: %s\n", tests[i].expected);
+                else
+                    printf("   Expected: NULL\n");
             }
         }
     }

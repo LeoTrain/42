@@ -355,6 +355,37 @@ void    test_memmove()
     display_str_tests(tests, 5, "MEMMOVE");
 }
 
+void    safe_memchr_test(t_test_str *tests, int pos, char *desc, int len, char *str, int c)
+{
+    void    *tmp1 = malloc(len);
+    void    *tmp2 = malloc(len);
+    if (!tmp1 || !tmp2)
+        return;
+    memcpy(tmp1, str, len);
+    memcpy(tmp2, str, len);
+
+    void *res1 = memchr(tmp1, c, len);
+    void *res2 = ft_memchr(tmp2, c, len);
+
+    if (res1 == NULL && res2 == NULL)
+        init_str_tests(tests, pos, desc, "NULL", "NULL", 1);
+    else if (res1 != NULL && res2 != NULL)
+        init_str_tests(tests, pos, desc, res1, res2, memcmp(res1, res2, len) == 0);
+    else
+        init_str_tests(tests, pos, desc, res1, res2, 0);
+}
+
+void    test_memchr()
+{
+    t_test_str tests[5];
+    safe_memchr_test(tests, 0, "Test 1: 'abc' to 'abc'", 3, "abc", 'a');
+    safe_memchr_test(tests, 1, "Test 2: 'abcd' to 'abcd'", 4, "abcd", 'c');
+    safe_memchr_test(tests, 2, "Test 3: 'abc de' to 'abc de'", 6, "abc de", 'l');
+    safe_memchr_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", 8, "abc de f", 'd');
+    safe_memchr_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", 9, "abc de fg", ' ');
+    display_str_tests(tests, 5, "MEMCHR");
+}
+
 
 void    run_tests()
 {
@@ -382,6 +413,7 @@ void    run_tests()
     test_memcpy();
     test_memccpy();
     test_memmove();
+    test_memchr();
 }
 
 int main()
