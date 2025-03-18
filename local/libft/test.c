@@ -123,9 +123,24 @@ void    test_strlen()
     printf("STRLEN END\n");
 }
 
+void    test_strdup()
+{
+    char *test1 = ft_strdup("abc");
+    char *test2 = ft_strdup("abcd");
+    char *test3 = ft_strdup("abc de");
+    char *test4 = ft_strdup("abc de f");
+    char *test5 = ft_strdup("abc de fg");
+    printf("\nSTRDUP START\n");
+    printf("TEST 1: %s\n", ft_strcmp(test1, "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(test2, "abcd") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(test3, "abc de") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(test4, "abc de f") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(test5, "abc de fg") == 0 ? "OK" : "KO");
+    printf("\nSTRDUP END\n");
+}
 
 int main()
 {
-    test_strlen();
+    test_strdup();
     return 0;
 }

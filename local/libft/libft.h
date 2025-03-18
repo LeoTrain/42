@@ -2,6 +2,7 @@
 #define LIBFT_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 char    ft_tolower(char c);
 char    ft_toupper(char c);
@@ -14,5 +15,6 @@ int     ft_atoi(char *str);
 int     ft_strcmp(char *s1, char *s2);
 int     ft_strncmp(char *s1, char *s2, int n);
 int     ft_strlen(char *str);
+char    *ft_strdup(char *str);
 
 #endif
