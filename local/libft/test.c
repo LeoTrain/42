@@ -155,6 +155,24 @@ void    test_strcpy()
     printf("STRCPY END\n");
 }
 
+void    test_strncpy()
+{
+    char    test1[4];
+    char    test2[5];
+    char    test3[7];
+    char    test4[8];
+    char    test5[9];
+    printf("\nSTRNCPY START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strncpy(test1, "abc", 3), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strncpy(test1, "abcd", 3), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strncpy(test1, "abcd", 4), "abcd") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strncpy(test2, "abcd", 5), "abcd") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strncpy(test3, "abc de", 7), "abc de") == 0 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strcmp(ft_strncpy(test4, "abc de f", 8), "abc de f") == 0 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strcmp(ft_strncpy(test5, "abc de fg", 9), "abc de fg") == 0 ? "OK" : "KO");
+    printf("STRNCPY END\n");
+}
+
 int main()
 {
     test_strcpy();
