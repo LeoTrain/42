@@ -1,21 +1,44 @@
 #include "libft.h"
 #include <stdio.h>
 
-int main()
+void test_tolower()
 {
     printf("\nTOLOWER START\n");
-    printf("%c\n", ft_tolower('A')); 
-    printf("%c\n", ft_tolower('a')); 
-    printf("%c\n", ft_tolower('Z')); 
-    printf("%c\n", ft_tolower('9')); 
+    printf("TEST 1: %d\n", ft_tolower('a') == 'a');
+    printf("TEST 2: %d\n", ft_tolower('A') == 'a');
+    printf("TEST 3: %d\n", ft_tolower('z') == 'z');
+    printf("TEST 4: %d\n", ft_tolower('9') == '9');
+    printf("TEST 5: %d\n", ft_tolower(' ') == ' ');
     printf("TOLOWER END\n");
+}
 
-
+void test_toupper()
+{
     printf("\nTOUPPER START\n");
-    printf("%c\n", ft_toupper('a')); 
-    printf("%c\n", ft_toupper('A')); 
-    printf("%c\n", ft_toupper('z')); 
-    printf("%c\n", ft_toupper('9')); 
+    printf("TEST 1: %d\n", ft_toupper('a') == 'A');
+    printf("TEST 2: %d\n", ft_toupper('A') == 'A');
+    printf("TEST 3: %d\n", ft_toupper('z') == 'Z');
+    printf("TEST 4: %d\n", ft_toupper('9') == '9');
+    printf("TEST 5: %d\n", ft_toupper(' ') == ' ');
     printf("TOUPPER END\n");
+}
+
+void test_isprint()
+{
+    printf("\nISPRINT START\n");
+    printf("TEST 1: %s\n", ft_isprint('a') == 1 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_isprint('A') == 1 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_isprint('z') == 1 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_isprint('9') == 1 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_isprint(' ') == 1 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_isprint(31) == 0 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_isprint(127) == 0 ? "OK" : "KO");
+    printf("ISPRINT END\n");
+}
+
+
+int main()
+{
+    test_isprint();
     return 0;
 }

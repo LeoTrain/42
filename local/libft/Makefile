@@ -1,5 +1,5 @@
 FINAL = libft.a
-SRCS = ft_tolower.c ft_toupper.c
+SRCS = ft_tolower.c ft_toupper.c ft_isprint.c
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 LIB = libft.h
