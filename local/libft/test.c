@@ -79,9 +79,39 @@ void test_atoi()
     printf("\nATOI END\n");
 }
 
+void test_strcmp()
+{
+    printf("\nSTRCMP START\n");
+    printf("TEST 1: %s\n", ft_strcmp("abc", "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp("abc", "abcd") == -100 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp("abcd", "abc") == 100 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp("abc", "abC") == 32 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp("abC", "abc") == -32 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strcmp("abc", "abD") == 31 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strcmp("abD", "abc") == -31 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_strcmp("abc", "ab") == 99 ? "OK" : "KO");
+    printf("STRCMP END\n");
+}
+
+void test_strncmp()
+{
+    printf("\nSTRNCMP START\n");
+    printf("TEST 1: %s\n", ft_strncmp("abc", "abc", 3) == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strncmp("abc", "abcd", 3) == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strncmp("abcd", "abc", 3) == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strncmp("abc", "abC", 3) == 32 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strncmp("abC", "abc", 3) == -32 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strncmp("abc", "abD", 3) == 31 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strncmp("abD", "abc", 3) == -31 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_strncmp("abc", "ab", 3) == 99 ? "OK" : "KO");
+    printf("TEST 9: %s\n", ft_strncmp("abc", "abcd", 4) == -100 ? "OK" : "KO");
+    printf("TEST 10: %s\n", ft_strncmp("abcd", "abc", 4) == 100 ? "OK" : "KO");
+    printf("\nSTRNCMP END\n");
+}
+
 
 int main()
 {
-    test_atoi();
+    test_strncmp();
     return 0;
 }
