@@ -64,9 +64,24 @@ void test_isalnum()
     printf("ISALNUM END\n");
 }
 
+void test_atoi()
+{
+    printf("\nATOI START\n");
+    printf("TEST 1: %s\n", ft_atoi("42") == 42 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_atoi(" 42") == 42 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_atoi("42 ") == 42 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_atoi(" 42 ") == 42 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_atoi(" 42 42") == 42 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_atoi(" 42 42 ") == 42 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_atoi(" +42abc32") == 42 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_atoi(" -42abc32") == -42 ? "OK" : "KO");
+    printf("TEST 9: %s\n", ft_atoi(" +-42abc32") == 0 ? "OK" : "KO");
+    printf("\nATOI END\n");
+}
+
 
 int main()
 {
-    test_isalnum();
+    test_atoi();
     return 0;
 }
