@@ -18,6 +18,7 @@ clean:
 
 fclean: clean
 	rm -f $(FINAL)
+	rm -f test
 
 re: fclean all
 
