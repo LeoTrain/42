@@ -1,11 +1,10 @@
 #ifndef LIBFT_H
 #define LIBFT_H
 
-#include <stdio.h>
 #include <stdlib.h>
 
-char            ft_tolower(char c);
-char            ft_toupper(char c);
+int             ft_tolower(int c);
+int             ft_toupper(int c);
 int             ft_isprint(int c);
 int             ft_isascii(int c);
 int             ft_isdigit(int c);
@@ -25,5 +24,6 @@ char            *ft_strchr(char *str, int c);
 char            *ft_strrchr(char *str, int c);
 char            *ft_strstr(char *str, char *to_find);
 char            *ft_strnstr(char *str, char *to_find, unsigned int n);
+void            *ft_memset(void *b, int c, int len);
 
 #endif

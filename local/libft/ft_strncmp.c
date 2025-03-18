@@ -7,5 +7,9 @@ int ft_strncmp(char *s1, char *s2, int n)
         i++;
     if (i == n)
         return (0);
-    return (s1[i] - s2[i]);
+    if (s1[i] > s2[i])
+        return (1);
+    else if (s1[i] < s2[i])
+        return (-1);
+    return (0);
 }
