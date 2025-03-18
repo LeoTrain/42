@@ -29,9 +29,9 @@ echo ""
 make
 echo ""
 echo "Running tests..."
-cc -Wall -Wextra -Werror -g test.c libft.a -o test
+cc -Wall -Wextra -Werror -g main.c libft.a -o tests
 echo ""
-./test
+./tests
 echo ""
 echo "Tests finished."
 echo "--------------------------------------"
