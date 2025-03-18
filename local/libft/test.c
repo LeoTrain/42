@@ -256,8 +256,22 @@ void    test_strstr()
     printf("STRSTR END\n");
 }
 
+void    test_strnstr()
+{
+    printf("\nSTRNSTR START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strnstr("abc", "a", 3), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strnstr("abc", "b", 3), "bc") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strnstr("abc", "c", 3), "c") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strnstr("They are great", "rea", 14), "reat") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strnstr("They are great", "rea", 9), "") == 0 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strcmp(ft_strnstr("They are great", "are", 14), "are great") == 0 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strcmp(ft_strnstr("They are great", "are", 9), "are great") == 0 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_strcmp(ft_strnstr("They are great", "great", 14), "great") == 0 ? "OK" : "KO");
+    printf("STRNSTR END\n");
+}
+
 int main()
 {
-    test_strstr();
+    test_strnstr();
     return 0;
 }
