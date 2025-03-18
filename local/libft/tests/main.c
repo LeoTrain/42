@@ -1,60 +1,5 @@
 #include "tests.h"
 
-// void test_toupper()
-// {
-//     t_test_int tests[5];
-//     init_tolower_tests(tests, 0, "Test 1: 'a' to 'A'", ft_toupper('a'), toupper('a'), ft_toupper('a') == toupper('a'));
-//     init_tolower_tests(tests, 1, "Test 2: 'A' to 'A'", ft_toupper('A'), toupper('A'), ft_toupper('A') == toupper('A'));
-//     init_tolower_tests(tests, 2, "Test 3: 'z' to 'Z'", ft_toupper('z'), toupper('z'), ft_toupper('z') == toupper('z'));
-//     init_tolower_tests(tests, 3, "Test 4: '9' to '9'", ft_toupper('9'), toupper('9'), ft_toupper('9') == toupper('9'));
-//     init_tolower_tests(tests, 4, "Test 5: ' ' to ' '", ft_toupper(' '), toupper(' '), ft_toupper(' ') == toupper(' '));
-//     display_int_tests(tests, 5, "TOUPPER");
-// }
-
-// void test_isprint()
-// {
-//     t_test_int tests[5];
-//     init_tolower_tests(tests, 0, "Test 1: 'a' to 1", ft_isprint('a'), isprint('a'), ft_isprint('a') == isprint('a'));
-//     init_tolower_tests(tests, 1, "Test 2: 'A' to 1", ft_isprint('A'), isprint('A'), ft_isprint('A') == isprint('A'));
-//     init_tolower_tests(tests, 2, "Test 3: 'z' to 1", ft_isprint('z'), isprint('z'), ft_isprint('z') == isprint('z'));
-//     init_tolower_tests(tests, 3, "Test 4: '9' to 1", ft_isprint('9'), isprint('9'), ft_isprint('9') == isprint('9'));
-//     init_tolower_tests(tests, 4, "Test 5: ' ' to 1", ft_isprint(' '), isprint(' '), ft_isprint(' ') == isprint(' '));
-//     display_int_tests(tests, 5, "ISPRINT");
-// }
-
-// void test_isascii()
-// {
-//     t_test_int tests[5];
-//     init_tolower_tests(tests, 0, "Test 1: 'a' to 1", ft_isascii('a'), isascii('a'), ft_isascii('a') == isascii('a'));
-//     init_tolower_tests(tests, 1, "Test 2: 'A' to 1", ft_isascii('A'), isascii('A'), ft_isascii('A') == isascii('A'));
-//     init_tolower_tests(tests, 2, "Test 3: 'z' to 1", ft_isascii('z'), isascii('z'), ft_isascii('z') == isascii('z'));
-//     init_tolower_tests(tests, 3, "Test 4: '9' to 1", ft_isascii('9'), isascii('9'), ft_isascii('9') == isascii('9'));
-//     init_tolower_tests(tests, 4, "Test 5: ' ' to 1", ft_isascii(' '), isascii(' '), ft_isascii(' ') == isascii(' '));
-//     display_int_tests(tests, 5, "ISASCII");
-// }
-
-// void test_isalnum()
-// {
-//     t_test_int tests[5];
-//     init_tolower_tests(tests, 0, "Test 1: 'a' to 1", ft_isalnum('a'), isalnum('a'), ft_isalnum('a') == isalnum('a'));
-//     init_tolower_tests(tests, 1, "Test 2: 'A' to 1", ft_isalnum('A'), isalnum('A'), ft_isalnum('A') == isalnum('A'));
-//     init_tolower_tests(tests, 2, "Test 3: 'z' to 1", ft_isalnum('z'), isalnum('z'), ft_isalnum('z') == isalnum('z'));
-//     init_tolower_tests(tests, 3, "Test 4: '9' to 1", ft_isalnum('9'), isalnum('9'), ft_isalnum('9') == isalnum('9'));
-//     init_tolower_tests(tests, 4, "Test 5: ' ' to 1", ft_isalnum(' '), isalnum(' '), ft_isalnum(' ') == isalnum(' '));
-//     display_int_tests(tests, 5, "ISALNUM");
-// }
-
-// void test_atoi()
-// {
-//     t_test_int tests[5];
-//     init_tolower_tests(tests, 0, "Test 1: '123' to 123", ft_atoi("123"), atoi("123"), ft_atoi("123") == atoi("123"));
-//     init_tolower_tests(tests, 1, "Test 2: '1234' to 1234", ft_atoi("1234"), atoi("1234"), ft_atoi("1234") == atoi("1234"));
-//     init_tolower_tests(tests, 2, "Test 3: '12345' to 12345", ft_atoi("12345"), atoi("12345"), ft_atoi("12345") == atoi("12345"));
-//     init_tolower_tests(tests, 3, "Test 4: '123456' to 123456", ft_atoi("123456"), atoi("123456"), ft_atoi("123456") == atoi("123456"));
-//     init_tolower_tests(tests, 4, "Test 5: '1234567' to 1234567", ft_atoi("1234567"), atoi("1234567"), ft_atoi("1234567") == atoi("1234567"));
-//     display_int_tests(tests, 5, "ATOI");
-// }
-
 // void test_strcmp()
 // {
 //     t_test_int tests[5];
@@ -407,5 +352,9 @@ int main()
 {
     test_tolower();
     test_toupper();
+    test_isprint();
+    test_isascii();
+    test_isalnum();
+    test_atoi();
     return 0;
 }
