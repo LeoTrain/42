@@ -109,9 +109,23 @@ void test_strncmp()
     printf("\nSTRNCMP END\n");
 }
 
+void    test_strlen()
+{
+    printf("\nSTRLEN START\n");
+    printf("TEST 1: %s\n", ft_strlen("abc") == 3 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strlen("abcd") == 4 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strlen("abcde") == 5 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strlen("abcdef") == 6 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strlen("abcdefg") == 7 ? "OK" : "KO");
+    printf("TEST 6: %s\n", ft_strlen("abcdefgh") == 8 ? "OK" : "KO");
+    printf("TEST 7: %s\n", ft_strlen("abcdefghi") == 9 ? "OK" : "KO");
+    printf("TEST 8: %s\n", ft_strlen("abcdefghij") == 10 ? "OK" : "KO");
+    printf("STRLEN END\n");
+}
+
 
 int main()
 {
-    test_strncmp();
+    test_strlen();
     return 0;
 }
