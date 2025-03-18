@@ -315,6 +315,26 @@ void    test_memcpy()
     display_str_tests(tests, 5, "MEMCPY");
 }
 
+void    safe_memccpy_test(t_test_str *tests, int pos, char *desc, int len)
+{
+    void *tmp1 = malloc(len);
+    void *tmp2 = malloc(len);
+    memccpy(tmp1, "abc", 'a', 3);
+    ft_memccpy(tmp2, "abc", 'a', 3);
+    init_str_tests(tests, pos, desc, tmp1, tmp2, memcmp(tmp1, tmp2, len) == 0);
+}
+
+void    test_memccpy()
+{
+    t_test_str tests[5];
+    safe_memccpy_test(tests, 0, "Test 1: 'abc' to 'abc'", 3);
+    safe_memccpy_test(tests, 1, "Test 2: 'abcd' to 'abcd'", 4);
+    safe_memccpy_test(tests, 2, "Test 3: 'abc de' to 'abc de'", 6);
+    safe_memccpy_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", 8);
+    safe_memccpy_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", 9);
+    display_str_tests(tests, 5, "MEMCCPY");
+}
+
 
 void    run_tests()
 {
@@ -340,6 +360,7 @@ void    run_tests()
     test_memset();
     test_bzero();
     test_memcpy();
+    test_memccpy();
 }
 
 int main()
