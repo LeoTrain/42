@@ -22,5 +22,6 @@ char            *ft_strcat(char *s1, char *s2);
 char            *ft_strncat(char *s1, char *s2, unsigned int n);
 unsigned int    ft_strlcat(char *s1, char *s2, unsigned int size);
 char            *ft_strchr(char *str, int c);
+char            *ft_strrchr(char *str, int c);
 
 #endif

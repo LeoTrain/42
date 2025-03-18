@@ -232,8 +232,19 @@ void    test_strchr()
     printf("STRCHR END\n");
 }
 
+void    test_strrchr()
+{
+    printf("\nSTRRCHR START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strrchr("abc", 'a'), "abc") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strrchr("abcba", 'b'), "ba") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strrchr("abc", 'c'), "c") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strrchr("abcd bef", 'd'), "d bef") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strrchr("abc def ghi", 'e'), "ef ghi") == 0 ? "OK" : "KO");
+    printf("STRRCHR END\n");
+}
+
 int main()
 {
-    test_strchr();
+    test_strrchr();
     return 0;
 }
