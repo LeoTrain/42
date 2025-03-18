@@ -315,24 +315,44 @@ void    test_memcpy()
     display_str_tests(tests, 5, "MEMCPY");
 }
 
-void    safe_memccpy_test(t_test_str *tests, int pos, char *desc, int len)
+void    safe_memccpy_test(t_test_str *tests, int pos, char *desc, int len, char *s1, int c)
 {
-    void *tmp1 = malloc(len);
-    void *tmp2 = malloc(len);
-    memccpy(tmp1, "abc", 'a', 3);
-    ft_memccpy(tmp2, "abc", 'a', 3);
+    void    *tmp1 = malloc(len);
+    void    *tmp2 = malloc(len);
+    memccpy(tmp1, s1, c, len);
+    ft_memccpy(tmp2, s1, c, len);
     init_str_tests(tests, pos, desc, tmp1, tmp2, memcmp(tmp1, tmp2, len) == 0);
 }
 
 void    test_memccpy()
 {
     t_test_str tests[5];
-    safe_memccpy_test(tests, 0, "Test 1: 'abc' to 'abc'", 3);
-    safe_memccpy_test(tests, 1, "Test 2: 'abcd' to 'abcd'", 4);
-    safe_memccpy_test(tests, 2, "Test 3: 'abc de' to 'abc de'", 6);
-    safe_memccpy_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", 8);
-    safe_memccpy_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", 9);
+    safe_memccpy_test(tests, 0, "Test 1: 'abc' to 'a'", 3, "abc", 'a');
+    safe_memccpy_test(tests, 1, "Test 2: 'abcd' to 'a'", 4, "abcd", 'a');
+    safe_memccpy_test(tests, 2, "Test 3: 'abc de' to 'abc de'", 6, "abc de", 'a');
+    safe_memccpy_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", 8, "abc de f", 'd');
+    safe_memccpy_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", 9, "abc de fg", ' ');
     display_str_tests(tests, 5, "MEMCCPY");
+}
+
+void    safe_memmove_test(t_test_str *tests, int pos, char *desc, int len, char *str)
+{
+    void    *tmp1 = malloc(len);
+    void    *tmp2 = malloc(len);
+    memmove(tmp1, str, len);
+    ft_memmove(tmp2, str, len);
+    init_str_tests(tests, pos, desc, tmp1, tmp2, memcmp(tmp1, tmp2, len) == 0);
+}
+
+void    test_memmove()
+{
+    t_test_str tests[5];
+    safe_memmove_test(tests, 0, "Test 1: 'abc' to 'abc'", 3, "abc");
+    safe_memmove_test(tests, 1, "Test 2: 'abcd' to 'abcd'", 4, "abcd");
+    safe_memmove_test(tests, 2, "Test 3: 'abc de' to 'abc de'", 6, "abc de");
+    safe_memmove_test(tests, 3, "Test 4: 'abc de f' to 'abc de f'", 8, "abc de f");
+    safe_memmove_test(tests, 4, "Test 5: 'abc de fg' to 'abc de fg'", 9, "abc de fg");
+    display_str_tests(tests, 5, "MEMMOVE");
 }
 
 
@@ -361,6 +381,7 @@ void    run_tests()
     test_bzero();
     test_memcpy();
     test_memccpy();
+    test_memmove();
 }
 
 int main()

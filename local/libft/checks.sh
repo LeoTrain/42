@@ -26,7 +26,7 @@ echo "--------------------------------------"
 echo ""
 
 echo ""
-make
+make re
 echo ""
 echo "Running tests..."
 cc -Wall -Wextra -Werror -g main.c libft.a -o tests
@@ -38,5 +38,5 @@ echo "--------------------------------------"
 echo ""
 
 echo "Cleaning up..."
-# make fclean
+make fclean
 rm test
