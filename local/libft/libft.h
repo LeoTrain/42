@@ -26,5 +26,6 @@ char            *ft_strstr(char *str, char *to_find);
 char            *ft_strnstr(char *str, char *to_find, unsigned int n);
 void            *ft_memset(void *b, int c, int len);
 void            ft_bzero(void *s, int n);
+void            ft_memcpy(char *dest, char *src, unsigned int n);
 
 #endif
