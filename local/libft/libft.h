@@ -18,5 +18,6 @@ int     ft_strlen(char *str);
 char    *ft_strdup(char *str);
 char    *ft_strcpy(char *dest, char *src);
 char    *ft_strncpy(char *dest, char *src, unsigned int n);
+char    *ft_strcat(char *s1, char *s2);
 
 #endif

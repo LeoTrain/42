@@ -160,8 +160,8 @@ void    test_strncpy()
     char    test1[4];
     char    test2[5];
     char    test3[7];
-    char    test4[8];
-    char    test5[9];
+    char    test4[9];
+    char    test5[10];
     printf("\nSTRNCPY START\n");
     printf("TEST 1: %s\n", ft_strcmp(ft_strncpy(test1, "abc", 3), "abc") == 0 ? "OK" : "KO");
     printf("TEST 2: %s\n", ft_strcmp(ft_strncpy(test1, "abcd", 3), "abc") == 0 ? "OK" : "KO");
@@ -173,8 +173,24 @@ void    test_strncpy()
     printf("STRNCPY END\n");
 }
 
+void    test_strcat()
+{
+    char    test1[7] = "abc";
+    char    test2[8] = "abc";
+    char    test3[10] = "abc de";
+    char    test4[11] = "abc de f";
+    char    test5[12] = "abc de fg";
+    printf("\nSTRCAT START\n");
+    printf("TEST 1: %s\n", ft_strcmp(ft_strcat(test1, "def"), "abcdef") == 0 ? "OK" : "KO");
+    printf("TEST 2: %s\n", ft_strcmp(ft_strcat(test2, "defg"), "abcdefg") == 0 ? "OK" : "KO");
+    printf("TEST 3: %s\n", ft_strcmp(ft_strcat(test3, " fgh"), "abc de fgh") == 0 ? "OK" : "KO");
+    printf("TEST 4: %s\n", ft_strcmp(ft_strcat(test4, "ghi"), "abc de fghi") == 0 ? "OK" : "KO");
+    printf("TEST 5: %s\n", ft_strcmp(ft_strcat(test5, "hij"), "abc de fghij") == 0 ? "OK" : "KO");
+    printf("STRCAT END\n");
+}
+
 int main()
 {
-    test_strcpy();
+    test_strcat();
     return 0;
 }
