@@ -5,7 +5,6 @@ SRCS = ft_tolower.c ft_toupper.c ft_isprint.c ft_isascii.c ft_isalpha.c ft_isdig
 		ft_memccpy.c ft_memmove.c ft_memchr.c
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
-LIB = libft.h
 
 all: $(FINAL)
 

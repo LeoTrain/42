@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 functions=(
 memset bzero memcpy memccpy memmove memchr memcmp strlen strdup strcpy strncpy
 strcat strncat strlcat strchr strrchr strstr strnstr strcmp strncmp atoi
@@ -11,7 +13,7 @@ missing=0
 echo "Checking for required function files..."
 
 for func in "${functions[@]}"; do
-    if [ ! -f "ft_${func}.c" ]; then
+    if [ ! -f "libft/ft_${func}.c" ]; then
         echo "❌ Missing: ft_${func}.c"
         missing=1
     fi
