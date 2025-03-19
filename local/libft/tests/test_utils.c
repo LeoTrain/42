@@ -2,7 +2,7 @@
 
 void init_int_test(t_test_int *tests, int position, char *description, int result, int expected, int passed)
 {
-    tests[position].description = description;
+    tests[position].description = strdup(description);
     tests[position].result = result ? result : 0;
     tests[position].expected = expected ? expected : 0;
     tests[position].passed = passed;
@@ -10,7 +10,7 @@ void init_int_test(t_test_int *tests, int position, char *description, int resul
 
 void init_str_test(t_test_str *tests, int position, char *description, char *result, char *expected, int passed)
 {
-    tests[position].description = description;
+    tests[position].description = strdup(description);
     tests[position].result = result ? strdup(result) : NULL;
     tests[position].expected = expected ? strdup(expected) : NULL;
     tests[position].passed = passed;

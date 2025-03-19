@@ -30,6 +30,14 @@ void    test_isalnum(void);
 void    test_atoi(void);
 void    test_strcmp(void);
 void    test_strncmp(void);
+void    test_strlen(void);
+void    test_strdup(void);
+void    test_strcpy(void);
+void    test_strncpy(void);
+void    test_strcat(void);
+void    test_strncat(void);
+void    test_strlcat(void);
+
 void    display_int_test(t_test_int *tests, int amount, char *name);
 void    display_str_test(t_test_str *tests, int amount, char *name);
 void    init_str_test(t_test_str *tests, int position, char *description, char *result, char *expected, int passed);
