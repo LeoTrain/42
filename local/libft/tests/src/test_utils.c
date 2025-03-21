@@ -16,6 +16,13 @@ void init_str_test(t_test_str *tests, int position, char *description, char *res
     tests[position].passed = passed;
 }
 
+int calculate_spaces_after_name(char *str)
+{
+    int max_len = 10;
+    int len = strlen(str);
+    return max_len - len;
+}
+
 void display_int_test(t_test_int *tests, int amount, char *name)
 {
     int passed = 1;
@@ -23,7 +30,12 @@ void display_int_test(t_test_int *tests, int amount, char *name)
         if (!tests[i].passed)
             passed = 0;
     if (passed)
-        printf("✅ %s OK\n", name);
+    {
+        printf("✅   %s", name);
+        for (int i = 0; i < calculate_spaces_after_name(name); i++)
+            printf(" ");
+        printf("OK\n");
+    }
     else
     {
         printf("❌ %s KO\n", name);
@@ -46,7 +58,12 @@ void display_str_test(t_test_str *tests, int amount, char *name)
         if (!tests[i].passed)
             passed = 0;
     if (passed)
-        printf("✅ %s OK\n", name);
+    {
+        printf("✅   %s", name);
+        for (int i = 0; i < calculate_spaces_after_name(name); i++)
+            printf(" ");
+        printf("OK\n");
+    }
     else
     {
         printf("❌ %s KO\n", name);
