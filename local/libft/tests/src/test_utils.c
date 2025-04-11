@@ -1,4 +1,4 @@
-#include "tests.h"
+#include "../tests.h"
 
 void init_int_test(t_test_int *tests, int position, char *description, int result, int expected, int passed)
 {

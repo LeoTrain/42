@@ -1,5 +1,5 @@
-#include "tests.h"
-#include "libft.h"
+#include "../tests.h"
+#include "../../libft/libft.h"
 
 void add_to_isprint_test(t_test_int *tests, int pos, int c)
 {
