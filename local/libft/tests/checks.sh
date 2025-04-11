@@ -22,11 +22,15 @@ fi
 sleep 1
 echo ""
 echo "--------------------------------------"
+echo "Checking Norm"
+norminette norminette ../libft/
 echo ""
+echo "--------------------------------------"
+echo "Building the tests"
 make
 echo ""
 echo "--------------------------------------"
-echo "Running tests..."
+echo "Running the tests..."
 sleep 2
 echo ""
 ./test_libft
