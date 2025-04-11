@@ -19,7 +19,6 @@ check_missing_functions() {
 	missing=0
 	echo "	Checking for required function files..."
 	for func in "${functions[@]}"; do
-		sleep 0.3
 		if [ ! -f "../libft/ft_${func}.c" ]; then
 			echo "❌ Missing: ft_${func}.c"
 			missing=1
@@ -61,7 +60,7 @@ build_test() {
     else
         make
         if [ $? -ne 0 ]; then
-            echo "❌ LIBFT BUILD FAILED"
+            echo "❌ TESTS BUILD FAILED"
             return 1
         fi
     fi

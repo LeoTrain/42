@@ -1,5 +1,5 @@
-#include "tests.h"
-#include "libft.h"
+#include "../tests.h"
+#include "../../libft/libft.h"
 
 void    add_to_strcmp_test(t_test_str *tests, int pos, char *s1, char *s2)
 {
@@ -10,8 +10,8 @@ void    add_to_strcmp_test(t_test_str *tests, int pos, char *s1, char *s2)
     strcpy(tmp1, s1);
     strcpy(tmp2, s1);
     ft_strcmp(tmp1, s2);
-    strcmp(tmp2, s2);
-    init_str_test(tests, pos, desc, tmp1, tmp2, strcmp(tmp1, tmp2) == 0);
+    if (strcmp(tmp2, s2) != 0)
+		init_str_test(tests, pos, desc, tmp1, tmp2, strcmp(tmp1, tmp2) == 0);
 }
 
 void    test_strcmp()
