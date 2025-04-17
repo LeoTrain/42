@@ -1,5 +1,5 @@
-#include "libft.h"
-#include "tests.h"
+#include "../../libft/libft.h"
+#include "../tests.h"
 
 void    add_to_isalnum_test(t_test_int *tests, int pos, int c)
 {
@@ -10,13 +10,16 @@ void    add_to_isalnum_test(t_test_int *tests, int pos, int c)
 
 void    test_isalnum()
 {
-    int total = 5;
+    int total = 8;
     t_test_int tests[total];
     add_to_isalnum_test(tests, 0, 'a');
-    add_to_isalnum_test(tests, 1, 'A');
+    add_to_isalnum_test(tests, 1, '-');
     add_to_isalnum_test(tests, 2, 'z');
     add_to_isalnum_test(tests, 3, '9');
     add_to_isalnum_test(tests, 4, ' ');
+    add_to_isalnum_test(tests, 5, '+');
+    add_to_isalnum_test(tests, 6, '%');
+    add_to_isalnum_test(tests, 7, 0);
     display_int_test(tests, total, "ISALNUM");
     for (int i = 0; i < total; i++)
         free(tests[i].description);

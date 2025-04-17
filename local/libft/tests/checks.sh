@@ -32,6 +32,7 @@ check_missing_functions() {
 
 check_norm() {
 	echo "	Checking Norm"
+	source ~/env/bin/activate
 	results=$(norminette ../libft/)
 	if echo "$results" | grep -q "KO"; then
 		echo "❌ Norm Failed"
