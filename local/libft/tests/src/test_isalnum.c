@@ -1,17 +1,17 @@
 #include "../../libft/libft.h"
 #include "../tests.h"
 
-void    add_to_isalnum_test(t_test_int *tests, int pos, int c)
+void    add_to_isalnum_test(t_test_bool *tests, int pos, int c)
 {
     char *desc = (char *)malloc(100);
     sprintf(desc, "Test %d: '%c' to %d", pos + 1, c, isalnum(c));
-    init_int_test(tests, pos, desc, ft_isalnum(c), isalnum(c), ft_isalnum(c) == isalnum(c));
+    init_bool_test(tests, pos, desc, ft_isalnum(c), isalnum(c));
 }
 
 void    test_isalnum()
 {
     int total = 8;
-    t_test_int tests[total];
+    t_test_bool tests[total];
     add_to_isalnum_test(tests, 0, 'a');
     add_to_isalnum_test(tests, 1, '-');
     add_to_isalnum_test(tests, 2, 'z');
@@ -20,7 +20,7 @@ void    test_isalnum()
     add_to_isalnum_test(tests, 5, '+');
     add_to_isalnum_test(tests, 6, '%');
     add_to_isalnum_test(tests, 7, 0);
-    display_int_test(tests, total, "ISALNUM");
+    display_bool_test(tests, total, "ISALNUM");
     for (int i = 0; i < total; i++)
         free(tests[i].description);
 }

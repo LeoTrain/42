@@ -16,6 +16,20 @@ void init_str_test(t_test_str *tests, int position, char *description, char *res
     tests[position].passed = passed;
 }
 
+void init_bool_test(t_test_bool *tests, int position, char *description, int result, int expected)
+{
+	int	passed;
+
+	tests[position].description = strdup(description);
+	tests[position].result = result;
+	tests[position].expected = expected;
+	if ((result && expected) || (!result && !expected))
+		passed = 1;
+	else
+		passed = 0;
+	tests[position].passed = passed;
+}
+
 int calculate_spaces_after_name(char *str)
 {
     int max_len = 10;
@@ -74,6 +88,35 @@ void display_str_test(t_test_str *tests, int amount, char *name)
                 printf("%s\n", tests[i].description);
                 printf("   Result: %s\n", tests[i].result ? tests[i].result : "NULL");
                 printf("   Expected: %s\n", tests[i].expected ? tests[i].expected : "NULL");
+            }
+        }
+    }
+}
+
+
+void display_bool_test(t_test_bool *tests, int amount, char *name)
+{
+    int passed = 1;
+    for (int i = 0; i < amount; i++)
+        if (!tests[i].passed)
+            passed = 0;
+    if (passed)
+    {
+        printf("✅   %s", name);
+        for (int i = 0; i < calculate_spaces_after_name(name); i++)
+            printf(" ");
+        printf("OK\n");
+    }
+    else
+    {
+        printf("❌ %s KO\n", name);
+        for (int i = 0; i < amount; i++)
+        {
+            if (!tests[i].passed)
+            {
+                printf("%s\n", tests[i].description);
+                printf("   Result: %d\n", tests[i].result);
+                printf("   Expected: %d\n", tests[i].expected);
             }
         }
     }

@@ -22,6 +22,14 @@ typedef struct s_test_str
     int passed;
 } t_test_str;
 
+typedef struct s_test_bool
+{
+	char *description;
+	int result;
+	int	expected;
+	int	passed;
+} t_test_bool;
+
 void    test_tolower(void);
 void    test_toupper(void);
 void    test_isprint(void);
@@ -47,7 +55,9 @@ void    test_memcpy(void);
 
 void    display_int_test(t_test_int *tests, int amount, char *name);
 void    display_str_test(t_test_str *tests, int amount, char *name);
+void	display_bool_test(t_test_bool *tests, int amount, char *name);
 void    init_str_test(t_test_str *tests, int position, char *description, char *result, char *expected, int passed);
 void    init_int_test(t_test_int *tests, int position, char *description, int result, int expected, int passed);
+void    init_bool_test(t_test_bool *tests, int position, char *description, int result, int expected);
 
 #endif
