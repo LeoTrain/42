@@ -24,7 +24,7 @@ void    run_tests()
     test_memset();
     test_bzero();
     test_memcpy();
-//     test_memccpy();
+	test_memccpy();
 //     test_memmove();
 //     test_memchr();
 }

@@ -1,5 +1,5 @@
-#include "libft.h"
-#include "tests.h"
+#include "../../libft/libft.h"
+#include "../tests.h"
 
 void    add_to_memcpy_test(t_test_str *tests, int pos, void *s1, int n)
 {

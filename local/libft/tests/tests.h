@@ -52,6 +52,7 @@ void    test_strnstr(void);
 void    test_memset(void);
 void    test_bzero(void);
 void    test_memcpy(void);
+void	test_memccpy(void);
 
 void    display_int_test(t_test_int *tests, int amount, char *name);
 void    display_str_test(t_test_str *tests, int amount, char *name);
