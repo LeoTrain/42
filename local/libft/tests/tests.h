@@ -16,6 +16,14 @@ typedef enum e_test_type
 	TEST_INT_ARRAY,
 } t_test_type;
 
+typedef struct s_test
+{
+	char *description;
+	void *result;
+	void *expected;
+	void *passed;
+} t_test;
+
 typedef struct s_test_int
 {
     char *description;
@@ -46,6 +54,7 @@ typedef struct s_test_int_array
 	int	*result;
 	int	*expected;
 	int	passed;
+	int size;
 } t_test_int_array;
 
 void    test_tolower(void);
@@ -76,10 +85,12 @@ void	test_memmove(void);
 void    display_int_test(t_test_int *tests, int amount, char *name);
 void    display_str_test(t_test_str *tests, int amount, char *name);
 void	display_bool_test(t_test_bool *tests, int amount, char *name);
-void	init_test(void *tests, int position, char *description, void *result, void *expected, int passed, t_test_type type);
 void    init_str_test(t_test_str *tests, int position, char *description, char *result, char *expected, int passed);
 void    init_int_test(t_test_int *tests, int position, char *description, int result, int expected, int passed);
-void	init_int_array_test(t_test_int_array *tests, int position, char *description, int *result, int *expected, int passed);
+void	init_int_array_test(t_test_int_array *tests, int position, char *description, int *result, int *expected, int size, int passed);
 void    init_bool_test(t_test_bool *tests, int position, char *description, int result, int expected);
+
+void	init_test(void *tests, int position, char *description, void *result, void *expected, int passed, int size, t_test_type type);
+void	display_test(void *tests, int amount, char *name, t_test_type type);
 
 #endif
