@@ -10,6 +10,8 @@ from dicks import functions_dick, test_cases
 class LibComparator:
     def __init__(self, lib_path: str) -> None:
         self.lib = ctypes.CDLL(lib_path)
+        self.lib.strstr.restype = ctypes.c_char_p
+        self.lib.strnstr.restype = ctypes.c_char_p
 
     def test_func(self, function: Functions, test_cases: List) -> None:
         func = functions_dick[function]
@@ -18,7 +20,7 @@ class LibComparator:
         is_bool = False
         res = func["return_value"]
         if res == bool:
-            args = ctypes.c_int
+            res = ctypes.c_int
             is_bool = True
         ft.argtypes = func["parameters"]
         ft.restype = res
@@ -34,7 +36,7 @@ class LibComparator:
 def main():
     comparator = LibComparator('../libft/libft.so')
     comparator.test_all()
-    # func = Functions.STRCMP
+    # func = Functions.STRSTR
     # comparator.test_func(func, test_cases[func])
 
 if __name__ == "__main__":
