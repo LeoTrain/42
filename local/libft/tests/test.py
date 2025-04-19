@@ -1,6 +1,7 @@
 import ctypes
-from enum import Enum
 import enum
+from enum import Enum
+import re
 
 
 class Functions(Enum):
@@ -26,6 +27,19 @@ class LibComparator:
             self.test_tolower()
         elif function == Functions.TOUPPER:
             self.test_toupper()
+        elif function == Functions.ISPRINT:
+            self.test_isprint()
+        elif function == Functions.ISASCII:
+            self.test_isascii()
+        elif function == Functions.ATOI:
+            self.test_atoi()
+
+    def test_all(self) -> None:
+        self.test_tolower()
+        self.test_toupper()
+        self.test_isprint()
+        self.test_isascii()
+        self.test_atoi()
 
     def signature_declarations(self) -> None:
         self.lib.ft_tolower.argtypes = [ctypes.c_int]
@@ -34,10 +48,10 @@ class LibComparator:
         self.lib.ft_toupper.argtypes = [ctypes.c_int]
         self.lib.ft_toupper.restype = ctypes.c_int
 
-        self.lib.ft_isprint.argtypes = [ctypes.c_char]
+        self.lib.ft_isprint.argtypes = [ctypes.c_int]
         self.lib.ft_isprint.restype = ctypes.c_int
 
-        self.lib.ft_isascii.argtypes = [ctypes.c_char]
+        self.lib.ft_isascii.argtypes = [ctypes.c_int]
         self.lib.ft_isascii.restype = ctypes.c_int
 
         self.lib.ft_atoi.argtypes = [ctypes.c_char_p]
@@ -77,7 +91,7 @@ class LibComparator:
                 ok = False
             finally:
                 ok = "✅" if ok else "❌"
-                print(f"{ok} TOLOWER {i}/{test_length}: char={case} (int={c}) → Expected {expected} got {result}")
+                self.print_final(ok, "TOLOWER", i,test_length, case, c, expected, result)
 
     def test_toupper(self) -> None:
         test_cases = [b'A', b'a', b'1', '+', 'E']
@@ -98,28 +112,59 @@ class LibComparator:
                 ok = False
             finally:
                 ok = "✅" if ok else "❌"
-                print(f"{ok} TOUPPER {i}/{test_length}: char={case} (int={c}) → Expected {expected} got {result}")
+                self.print_final(ok, "TOUPPER", i, test_length, case, c, expected, result)
 
     def test_isprint(self) -> None:
-        assert self.lib.ft_isprint(ord('A')) == 1
-        assert self.lib.ft_isprint(9) == 0  # Tabulation
-        assert self.lib.ft_isprint(ord(' ')) == 1
-        assert self.lib.ft_isprint(ord('7')) == 1
-        assert self.lib.ft_isprint(10) == 0  # Retour à la ligne
+        test_cases = ['A', '\0', '1', '+', 'E', '\t']
+        test_length = len(test_cases)
+        for i, case in enumerate(test_cases):
+            c = ord(case)
+            if c > 127:
+                continue
+            expected = result = None
+            try:
+                expected = self.lib.isprint(c)
+                result = self.lib.ft_isprint(c)
+                assert bool(result) == bool(expected)
+                ok = "✅"
+            except Exception:
+                ok = "❌"
+            self.print_final(ok, "ISPRINT", i, test_length, case, c, bool(expected), bool(result))
 
     def test_isascii(self) -> None:
-        assert self.lib.ft_isascii(ord('A')) == 1
-        assert self.lib.ft_isascii(200) == 0
-        assert self.lib.ft_isascii(0) == 1
-        assert self.lib.ft_isascii(127) == 1
-        assert self.lib.ft_isascii(-1) == 0
+        test_cases = ['A', '\0', '1', '+', 'E', '\t']
+        test_length = len(test_cases)
+        for i, case in enumerate(test_cases):
+            c = ord(case)
+            if c > 127:
+                continue
+            expected = result = None
+            try:
+                expected = self.lib.isprint(c)
+                result = self.lib.ft_isprint(c)
+                assert bool(result) == bool(expected)
+                ok = "✅"
+            except Exception:
+                ok = "❌"
+            self.print_final(ok, "ISASCII", i, test_length, case, c, bool(expected), bool(result))
 
     def test_atoi(self) -> None:
-        assert self.lib.ft_atoi(b"42") == 42
-        assert self.lib.ft_atoi(b"-42") == -42
-        assert self.lib.ft_atoi(b"   42") == 42
-        assert self.lib.ft_atoi(b"42   ") == 42
-        assert self.lib.ft_atoi(b"42abc") == 42
+        test_cases = ["-152", "++52", "42", "    42", " - 42", " "]
+        test_length = len(test_cases)
+        for i, case in enumerate(test_cases):
+            c = case.encode('utf-8')
+            expected = result = ok = None
+            try:
+                expected = self.lib.atoi(c)
+                result = self.lib.ft_atoi(c)
+                assert result == expected
+                ok = True
+            except Exception:
+                ok = False
+            finally:
+                ok = "✅" if ok else "❌"
+                self.print_final(ok, "ATOI", i, test_length, case, c, expected, result, False)
+
 
     def test_strcmp(self) -> None:
         assert self.lib.ft_strcmp(b"abc", b"abc") == 0
@@ -155,9 +200,21 @@ class LibComparator:
         self.lib.ft_memmove(dest, src, 3)
         assert dest.value == b"123"
 
+    def display_char(self, c):
+        escape = {'\n': '\\n', '\t': '\\t', '\0': '\\0', ' ': "' '"}
+        return escape.get(c, f"'{c}'" if 32 <= ord(c) <= 126 else f"non-printable({ord(c)})")
+
+    def print_final(self, ok: str, test_name: str, current_index: int, test_length: int, case, c, expected, result, is_ord: bool=True) -> None:
+        if is_ord:
+            print(f"{ok} {test_name} {current_index+1}/{test_length}: char={self.display_char(case)} (int={c}) → Expected {expected} got {result}")
+        else:
+            print(f"{ok} {test_name} {current_index+1}/{test_length}: (int={c}) → Expected {expected} got {result}")
+
+
 def main():
     comparator = LibComparator('../libft/libft.so')
-    comparator.only_one(Functions.TOUPPER)
+    comparator.only_one(Functions.ATOI)
+    # comparator.test_all()
 
 
 
