@@ -3,37 +3,9 @@ from os import name
 from typing import List
 from enum import Enum
 from test_function import test_function
+from function_enum import Functions
+from dicks import test_cases
 
-
-class Functions(Enum):
-    TOLOWER = 1
-    TOUPPER = 2
-    ISPRINT = 3
-    ISASCII = 4
-    ISALNUM = 5
-    ISDIGIT = 6
-    ISALPHA = 7
-    ATOI = 8
-    STRNCMP = 9
-    STRCMP = 10
-    STRNSTR = 11
-    STRSTR = 12
-    STRRCHR = 13
-    STRCHR = 14
-    STRLCAT = 15
-    STRNCAT = 16
-    STRCAT = 17
-    STRNCPY = 18
-    STRCPY = 19
-    STRDUP = 20
-    STRLEN = 21
-    MEMCMP = 22
-    MEMCHR = 23
-    MEMMOVE = 24
-    MEMCCPY = 25
-    MEMCPY = 26
-    BZERO = 27
-    MEMSET= 28
 
 functions_dick = {
     Functions.TOLOWER: {"real": "tolower", "ft": "ft_tolower", "parameters": [ctypes.c_int], "return_value": ctypes.c_int},
@@ -55,6 +27,11 @@ class LibComparator:
         for i, case in enumerate(test_cases):
             c = ord(case)
             test_function(function.name, real, ft, i, test_length-1, c, func["return_value"])
+
+    def test_all(self) -> None:
+        for key in functions_dick.keys():
+            print(key)
+            self.test_func(key, test_cases[key])
 
     def only_one(self, function: Functions) -> None:
         if function == Functions.TOLOWER:
@@ -114,13 +91,6 @@ class LibComparator:
         elif function == Functions.MEMSET:
             pass
 
-    def test_all(self) -> None:
-        self.test_tolower()
-        self.test_toupper()
-        self.test_isprint()
-        self.test_isascii()
-
-        self.test_atoi()
 
     def signature_declarations(self) -> None:
         self.lib.ft_tolower.argtypes = [ctypes.c_int]
@@ -270,8 +240,8 @@ class LibComparator:
 def main():
     comparator = LibComparator('../libft/libft.so')
     # comparator.only_one(Functions.TOUPPER)
-    # comparator.test_all()
-    comparator.test_func(Functions.ISPRINT, [b'A', b'a', b'1', '+', 'E'])
+    # comparator.test_func(Functions.ISPRINT, [b'A', b'a', b'1', '+', 'E'])
+    comparator.test_all()
 
 
 

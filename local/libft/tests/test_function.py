@@ -12,17 +12,23 @@ def test_function(function_name, real, ft, i, test_length, test_case, return_val
     except Exception:
         ok = ""
     finally:
-        print_final(ok, function_name, i, test_length, test_case, test_case, expected, result, return_value)
+        print_final(ok, function_name, i, test_length, test_case, expected, result, return_value)
 
-def print_final(ok: str, test_name: str, current_index: int, test_length: int, case, c, expected, result, return_value) -> None:
-    if return_value == ctypes.c_int:
-        print(f"{ok} {test_name} {current_index+1}/{test_length}: char={display_char(case)} (int={c}) → Expected {expected} got {result}")
-    elif return_value == bool:
-        print(f"{ok} {test_name} {current_index+1}/{test_length}: (int={c}) → Expected {expected} got {result}")
+def print_final(ok: str, test_name: str, current_index: int, test_length: int, case, expected, result, return_value) -> None:
+    ok = "✅" if expected == result else "❌"
+    if return_value == ctypes.c_int or return_value == bool:
+        display = display_char(case)
+        int_val = ord(case) if isinstance(case, str) else case
+        print(f"{ok} {test_name} {current_index+1}/{test_length}: char={display} (int={int_val}) → Expected {expected} got {result}")
     else:
-        print(f"Type not implemented")
+        print(f"{ok} {test_name} {current_index+1}/{test_length}: case={case} → Expected {expected} got {result}")
 
 def display_char(c):
+    if isinstance(c, int):
+        try:
+            c = chr(c)
+        except ValueError:
+            return f"non-valid({c})"
     escape = {'\n': '\\n', '\t': '\\t', '\0': '\\0', ' ': "' '"}
     return escape.get(c, f"'{c}'" if 32 <= ord(c) <= 126 else f"non-printable({ord(c)})")
 
