@@ -1,7 +1,8 @@
 import ctypes
-import enum
+from os import name
+from typing import List
 from enum import Enum
-import re
+from test_function import test_function
 
 
 class Functions(Enum):
@@ -9,18 +10,51 @@ class Functions(Enum):
     TOUPPER = 2
     ISPRINT = 3
     ISASCII = 4
-    ATOI = 5
-    STRCMP = 6
-    STRLEN = 7
-    STRDUP = 8
-    STRCPY = 9
-    MEMMOVE = 10
+    ISALNUM = 5
+    ISDIGIT = 6
+    ISALPHA = 7
+    ATOI = 8
+    STRNCMP = 9
+    STRCMP = 10
+    STRNSTR = 11
+    STRSTR = 12
+    STRRCHR = 13
+    STRCHR = 14
+    STRLCAT = 15
+    STRNCAT = 16
+    STRCAT = 17
+    STRNCPY = 18
+    STRCPY = 19
+    STRDUP = 20
+    STRLEN = 21
+    MEMCMP = 22
+    MEMCHR = 23
+    MEMMOVE = 24
+    MEMCCPY = 25
+    MEMCPY = 26
+    BZERO = 27
+    MEMSET= 28
+
+functions_dick = {
+    Functions.TOLOWER: {"real": "tolower", "ft": "ft_tolower", "parameters": [ctypes.c_int], "return_value": ctypes.c_int},
+    Functions.TOUPPER: {"real": "toupper", "ft": "ft_toupper", "parameters": [ctypes.c_int], "return_value": ctypes.c_int},
+    Functions.ISPRINT: {"real": "isprint", "ft": "ft_isprint", "parameters": [ctypes.c_int], "return_value": bool},
+}
 
 
 class LibComparator:
     def __init__(self, lib_path: str) -> None:
         self.lib = ctypes.CDLL(lib_path)
         self.signature_declarations()
+
+    def test_func(self, function: Functions, test_cases: List) -> None:
+        func = functions_dick[function]
+        real = getattr(self.lib, func["real"])
+        ft = getattr(self.lib, func["ft"])
+        test_length = len(test_cases)
+        for i, case in enumerate(test_cases):
+            c = ord(case)
+            test_function(function.name, real, ft, i, test_length-1, c, func["return_value"])
 
     def only_one(self, function: Functions) -> None:
         if function == Functions.TOLOWER:
@@ -31,14 +65,61 @@ class LibComparator:
             self.test_isprint()
         elif function == Functions.ISASCII:
             self.test_isascii()
+        elif function == Functions.ISALNUM:
+            pass
+        elif function == Functions.ISDIGIT:
+            pass
+        elif function == Functions.ISALPHA:
+            pass
         elif function == Functions.ATOI:
             self.test_atoi()
+        elif function == Functions.STRNCMP:
+            pass
+        elif function == Functions.STRCMP:
+            pass
+        elif function == Functions.STRNSTR:
+            pass
+        elif function == Functions.STRSTR:
+            pass
+        elif function == Functions.STRRCHR:
+            pass
+        elif function == Functions.STRCHR:
+            pass
+        elif function == Functions.STRLCAT:
+            pass
+        elif function == Functions.STRNCAT:
+            pass
+        elif function == Functions.STRCAT:
+            pass
+        elif function == Functions.STRNCPY:
+            pass
+        elif function == Functions.STRCPY:
+            pass
+        elif function == Functions.STRDUP:
+            pass
+        elif function == Functions.STRLEN:
+            pass
+        elif function == Functions.MEMCMP:
+            pass
+        elif function == Functions.MEMCHR:
+            pass
+        elif function == Functions.MEMMOVE:
+            pass
+        elif function == Functions.MEMCCPY:
+            pass
+        elif function == Functions.MEMCPY:
+            pass
+        elif function == Functions.BZERO:
+            pass
+        elif function == Functions.MEMSET:
+            pass
 
     def test_all(self) -> None:
         self.test_tolower()
         self.test_toupper()
         self.test_isprint()
         self.test_isascii()
+
         self.test_atoi()
 
     def signature_declarations(self) -> None:
@@ -79,19 +160,8 @@ class LibComparator:
             c = ord(case)
             if c > 127: # if non-ASCII
                 continue
-            expected = result = ok = None
-            try:
-                expected = self.lib.tolower(c)
-                result = self.lib.ft_tolower(c)
-                assert result == expected
-                ok = True
-            except AssertionError:
-                ok = False
-            except Exception:
-                ok = False
-            finally:
-                ok = "✅" if ok else "❌"
-                self.print_final(ok, "TOLOWER", i,test_length, case, c, expected, result)
+            ok = "✅" if test_function(self.lib.tolower, self.lib.ft_tolower, c) else "❌"
+            self.print_final(ok, "TOLOWER", i,test_length, case, c, self.lib.tolower(c), self.lib.ft_tolower(c))
 
     def test_toupper(self) -> None:
         test_cases = [b'A', b'a', b'1', '+', 'E']
@@ -100,19 +170,8 @@ class LibComparator:
             c = ord(case)
             if c > 127: # if non-ASCII
                 continue
-            expected = result = ok = None
-            try:
-                expected = self.lib.toupper(c)
-                result = self.lib.ft_toupper(c)
-                assert result == expected
-                ok = True
-            except AssertionError:
-                ok = False
-            except Exception:
-                ok = False
-            finally:
-                ok = "✅" if ok else "❌"
-                self.print_final(ok, "TOUPPER", i, test_length, case, c, expected, result)
+            ok = "✅" if test_function(self.lib.toupper, self.lib.ft_toupper, c) else "❌"
+            self.print_final(ok, "TOUPPER", i,test_length, case, c, self.lib.toupper(c), self.lib.ft_toupper(c))
 
     def test_isprint(self) -> None:
         test_cases = ['A', '\0', '1', '+', 'E', '\t']
@@ -121,6 +180,8 @@ class LibComparator:
             c = ord(case)
             if c > 127:
                 continue
+            ok = "✅" if test_function(self.lib.isprint, self.lib.ft_isprint, c) else "❌"
+            self.print_final(ok, "ISPRINT", i,test_length, case, c, self.lib.isprint(c), self.lib.ft_isprint(c))
             expected = result = None
             try:
                 expected = self.lib.isprint(c)
@@ -204,17 +265,13 @@ class LibComparator:
         escape = {'\n': '\\n', '\t': '\\t', '\0': '\\0', ' ': "' '"}
         return escape.get(c, f"'{c}'" if 32 <= ord(c) <= 126 else f"non-printable({ord(c)})")
 
-    def print_final(self, ok: str, test_name: str, current_index: int, test_length: int, case, c, expected, result, is_ord: bool=True) -> None:
-        if is_ord:
-            print(f"{ok} {test_name} {current_index+1}/{test_length}: char={self.display_char(case)} (int={c}) → Expected {expected} got {result}")
-        else:
-            print(f"{ok} {test_name} {current_index+1}/{test_length}: (int={c}) → Expected {expected} got {result}")
 
 
 def main():
     comparator = LibComparator('../libft/libft.so')
-    comparator.only_one(Functions.ATOI)
+    # comparator.only_one(Functions.TOUPPER)
     # comparator.test_all()
+    comparator.test_func(Functions.ISPRINT, [b'A', b'a', b'1', '+', 'E'])
 
 
 
