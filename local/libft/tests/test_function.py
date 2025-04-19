@@ -1,5 +1,3 @@
-import ctypes
-import re
 
 def test_function(function_name, real, ft, i, test_length, test_case, is_bool) -> None:
     expected = real(*test_case) if isinstance(test_case, tuple) else real(test_case)
