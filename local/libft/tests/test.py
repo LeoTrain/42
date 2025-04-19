@@ -24,13 +24,15 @@ class LibComparator:
     def only_one(self, function: Functions) -> None:
         if function == Functions.TOLOWER:
             self.test_tolower()
+        elif function == Functions.TOUPPER:
+            self.test_toupper()
 
     def signature_declarations(self) -> None:
         self.lib.ft_tolower.argtypes = [ctypes.c_int]
         self.lib.ft_tolower.restype = ctypes.c_int
 
-        self.lib.ft_toupper.argtypes = [ctypes.c_char]
-        self.lib.ft_toupper.restype = ctypes.c_char
+        self.lib.ft_toupper.argtypes = [ctypes.c_int]
+        self.lib.ft_toupper.restype = ctypes.c_int
 
         self.lib.ft_isprint.argtypes = [ctypes.c_char]
         self.lib.ft_isprint.restype = ctypes.c_int
@@ -78,11 +80,25 @@ class LibComparator:
                 print(f"{ok} TOLOWER {i}/{test_length}: char={case} (int={c}) → Expected {expected} got {result}")
 
     def test_toupper(self) -> None:
-        assert self.lib.ft_toupper(ord('a')) == ord('A')
-        assert self.lib.ft_toupper(ord('A')) == ord('A')
-        assert self.lib.ft_toupper(ord('1')) == ord('1')
-        assert self.lib.ft_toupper(ord('é')) == ord('É')
-        assert self.lib.ft_toupper(ord('É')) == ord('É')
+        test_cases = [b'A', b'a', b'1', '+', 'E']
+        test_length = len(test_cases)
+        for i, case in enumerate(test_cases):
+            c = ord(case)
+            if c > 127: # if non-ASCII
+                continue
+            expected = result = ok = None
+            try:
+                expected = self.lib.toupper(c)
+                result = self.lib.ft_toupper(c)
+                assert result == expected
+                ok = True
+            except AssertionError:
+                ok = False
+            except Exception:
+                ok = False
+            finally:
+                ok = "✅" if ok else "❌"
+                print(f"{ok} TOUPPER {i}/{test_length}: char={case} (int={c}) → Expected {expected} got {result}")
 
     def test_isprint(self) -> None:
         assert self.lib.ft_isprint(ord('A')) == 1
@@ -141,7 +157,7 @@ class LibComparator:
 
 def main():
     comparator = LibComparator('../libft/libft.so')
-    comparator.only_one(Functions.TOLOWER)
+    comparator.only_one(Functions.TOUPPER)
 
 
 
