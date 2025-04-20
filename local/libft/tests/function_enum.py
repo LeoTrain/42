@@ -1,6 +1,7 @@
 from enum import Enum
 
 class Functions(Enum):
+    NONE = 0
     TOLOWER = 1
     TOUPPER = 2
     ISPRINT = 3

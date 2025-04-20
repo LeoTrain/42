@@ -2,19 +2,108 @@ import ctypes
 from function_enum import Functions
 
 functions_dick = {
-    Functions.TOLOWER: {"real": "tolower", "ft": "ft_tolower", "parameters": [ctypes.c_int], "return_value": ctypes.c_int},
-    Functions.TOUPPER: {"real": "toupper", "ft": "ft_toupper", "parameters": [ctypes.c_int], "return_value": ctypes.c_int},
-    Functions.ISPRINT: {"real": "isprint", "ft": "ft_isprint", "parameters": [ctypes.c_int], "return_value": bool},
-    Functions.ISASCII: {"real": "isascii", "ft": "ft_isascii", "parameters": [ctypes.c_int], "return_value": bool},
-    Functions.ISALNUM: {"real": "isalnum", "ft": "ft_isalnum", "parameters": [ctypes.c_int], "return_value": bool},
-    Functions.ISDIGIT: {"real": "isdigit", "ft": "ft_isdigit", "parameters": [ctypes.c_int], "return_value": bool},
-    Functions.ISALPHA: {"real": "isalpha", "ft": "ft_isalpha", "parameters": [ctypes.c_int], "return_value": bool},
-    Functions.ATOI: {"real": "atoi", "ft": "ft_atoi", "parameters": [ctypes.c_char_p], "return_value": ctypes.c_int},
-    Functions.STRNCMP: {"real": "strncmp", "ft": "ft_strncmp", "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int], "return_value": ctypes.c_int},
-    Functions.STRCMP: {"real": "strcmp", "ft": "ft_strcmp", "parameters": [ctypes.c_char_p, ctypes.c_char_p], "return_value": ctypes.c_int},
-    Functions.STRSTR: {"real": "strstr", "ft": "ft_strstr", "parameters": [ctypes.c_char_p, ctypes.c_char_p], "return_value": ctypes.c_char_p},
-    Functions.STRNSTR: {"real": "strnstr", "ft": "ft_strnstr", "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t], "return_value": ctypes.c_char_p},
-
+    Functions.TOLOWER: {
+        "real": "tolower",
+        "ft": "ft_tolower",
+        "parameters": [ctypes.c_int],
+        "return_value": ctypes.c_int
+    },
+    Functions.TOUPPER: {
+        "real": "toupper",
+        "ft": "ft_toupper",
+        "parameters": [ctypes.c_int],
+        "return_value": ctypes.c_int
+    },
+    Functions.ISPRINT: {
+        "real": "isprint",
+        "ft": "ft_isprint",
+        "parameters": [ctypes.c_int],
+        "return_value": bool
+    },
+    Functions.ISASCII: {
+        "real": "isascii",
+        "ft": "ft_isascii",
+        "parameters": [ctypes.c_int],
+        "return_value": bool
+    },
+    Functions.ISALNUM: {
+        "real": "isalnum",
+        "ft": "ft_isalnum",
+        "parameters": [ctypes.c_int],
+        "return_value": bool
+    },
+    Functions.ISDIGIT: {
+        "real": "isdigit",
+        "ft": "ft_isdigit",
+        "parameters": [ctypes.c_int],
+        "return_value": bool
+    },
+    Functions.ISALPHA: {
+        "real": "isalpha",
+        "ft": "ft_isalpha",
+        "parameters": [ctypes.c_int],
+        "return_value": bool
+    },
+    Functions.ATOI: {
+        "real": "atoi",
+        "ft": "ft_atoi",
+        "parameters": [ctypes.c_char_p],
+        "return_value": ctypes.c_int
+    },
+    Functions.STRNCMP: {
+        "real": "strncmp",
+        "ft": "ft_strncmp",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int],
+        "return_value": ctypes.c_int
+    },
+    Functions.STRCMP: {
+        "real": "strcmp",
+        "ft": "ft_strcmp",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p],
+        "return_value": ctypes.c_int
+    },
+    Functions.STRSTR: {
+        "real": "strstr",
+        "ft": "ft_strstr",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p],
+        "return_value": ctypes.c_char_p
+    },
+    Functions.STRNSTR: {
+        "real": "strnstr",
+        "ft": "ft_strnstr",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t],
+        "return_value": ctypes.c_char_p
+    },
+    Functions.STRRCHR: {
+    "real": "strrchr",
+    "ft": "ft_strrchr",
+    "parameters": [ctypes.c_char_p, ctypes.c_int],
+    "return_value": ctypes.c_char_p
+    },
+    Functions.STRCHR: {
+        "real": "strchr",
+        "ft": "ft_strchr",
+        "parameters": [ctypes.c_char_p, ctypes.c_int],
+        "return_value": ctypes.c_char_p
+    },
+    Functions.STRLCAT: {
+        "real": "strlcat",
+        "ft": "ft_strlcat",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t],
+        "return_value": ctypes.c_size_t
+    },
+    Functions.STRNCAT: {
+        "real": "strncat",
+        "ft": "ft_strncat",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t],
+        "return_value": ctypes.c_char_p
+    },
+    Functions.STRCAT: {
+        "real": "strcat",
+        "ft": "ft_strcat",
+        "parameters": [ctypes.c_char_p, ctypes.c_char_p],
+        "return_value": ctypes.c_char_p
+    },
 }
 
 test_cases = {
@@ -78,6 +167,34 @@ test_cases = {
         (b"", b"", 1),
         (b"", b"abc", 0),
         (b"abc", b"abcd", 4),
-    ]
-
+    ],
+    Functions.STRRCHR: [
+        (b"bonjour", ord('o')),
+        (b"bonjour", ord('b')),
+        (b"bonjour", ord('r')),
+        (b"bonjour", ord('x')),
+        (b"", ord('b')),
+    ],
+    Functions.STRCHR: [
+        (b"bonjour", ord('o')),
+        (b"bonjour", ord('b')),
+        (b"bonjour", ord('r')),
+        (b"bonjour", ord('x')),
+        (b"", ord('b')),
+    ],
+    Functions.STRLCAT: [
+        (bytearray(b"Hello\x00" + b"\x00"*10), b" World", 15),
+        (bytearray(b"A\x00" + b"\x00"*10), b"BCD", 5),
+        (bytearray(b"" + b"\x00"*10), b"abc", 10),
+    ],
+    Functions.STRNCAT: [
+        (bytearray(b"Hello\x00" + b"\x00"*10), b" World", 3),
+        (bytearray(b"A\x00" + b"\x00"*10), b"BCD", 2),
+        (bytearray(b"" + b"\x00"*10), b"abc", 1),
+    ],
+    Functions.STRCAT: [
+        (bytearray(b"Hello\x00" + b"\x00"*10), b" World"),
+        (bytearray(b"A\x00" + b"\x00"*10), b"BCD"),
+        (bytearray(b"" + b"\x00"*10), b"abc"),
+    ],
 }
