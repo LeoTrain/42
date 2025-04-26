@@ -52,18 +52,19 @@ int	main(void)
 	t_list *list1 = ft_lstnew(s1);
 	t_list *list2 = ft_lstnew(s2);
 	ft_lstadd_front(&list1,  list2);
-	t_list *current = list1;
-	while (current)
-	{
-		printf("%s\n", (char *)current->content);
-		current = current->next;
-	}
-	current = list1;
-    while (current)
-    {
-        t_list *temp = current;
-        current = current->next;
-        free(temp);
-    }
+	printf("%d --- %d\n", ft_lstsize(list1), ft_lstsize(list2));
+	// t_list *current = list1;
+	// while (current)
+	// {
+	// 	printf("%s\n", (char *)current->content);
+	// 	current = current->next;
+	// }
+	// current = list1;
+	//    while (current)
+	//    {
+	//        t_list *temp = current;
+	//        current = current->next;
+	//        free(temp);
+	//    }
 	return (0);
 }
