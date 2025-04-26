@@ -1,73 +1,49 @@
-#include "../libft/libft.h"
-#include <stdio.h>
-#include <fcntl.h>
+#include "teastes.h"
 
-char	rot_1(unsigned int i, char c)
+int main(void)
 {
-	(void)i;
-	 return (c + 1);
+    printf("isalpha: ");
+    test_isalpha();
+    printf("isdigit: ");
+    test_isdigit();
+    printf("isalnum: ");
+    test_isalnum();
+    printf("isascii: ");
+    test_isascii();
+    printf("isprint: ");
+    test_isprint();
+    printf("strlen: ");
+    test_strlen();
+    printf("memset: ");
+    test_memset();
+    printf("bzero: ");
+    test_bzero();
+    printf("memcpy: ");
+    test_memcpy();
+    printf("memmove: ");
+    test_memmove();
+    printf("strlcpy: ");
+    test_strlcpy();
+    printf("strlcat: ");
+    test_strlcat();
+	printf("toupper: ");
+	test_toupper();
+	printf("tolower: ");
+	test_tolower();
+	printf("strchr: ");
+	test_strchr();
+	printf("strrchr: ");
+	test_strrchr();
+	printf("strncmp: ");
+	test_strncmp();
+	printf("memchr: ");
+	test_memchr();
+	printf("memcmp: ");
+	test_memcmp();
+	printf("strnstr: ");
+	test_strnstr();
+	printf("atoi: ");
+	test_atoi();
+    return (0);
 }
 
-void	rot_2(unsigned int i, char *c)
-{
-	(void)i;
-	char	new_val;
-	new_val = *c + 2;
-	*c = new_val;
-}
-
-
-int	main(void)
-{
-	/*printf("SPLIT:\n");*/
-	/*char **strs = ft_split(",,,,aaa,,,aaa,,,aaa,,,", ',');*/
-	/*for (int i = 0; strs[i] != 0; i++)*/
-	/*	printf("	%s\n", strs[i]);*/
-
-	/*printf("ITOA:\n");*/
-	/*printf("1. %s\n", ft_itoa(-123));*/
-	/*printf("2. %s\n", ft_itoa(2147483647));*/
-	/*printf("3. %s\n", ft_itoa(-2147483648));*/
-	/*printf("4. %s\n", ft_itoa(0));*/
-	/*printf("4. %s\n", ft_itoa(1));*/
-	/*printf("4. %s\n", ft_itoa(-1));*/
-
-	/*char str[] = "hello";*/
-	/*printf("%s\n", ft_strmapi(str, rot_1));*/
-	/*ft_striteri(str, rot_2);*/
-	/*printf("%s\n", str);*/
-
-	/*ft_putnbr_fd(0, 1);*/
-	/*int fd = open("test.txt", O_RDWR);*/
-	/*if (fd == -1)*/
-	/*	printf("ERROR");*/
-	/*else {*/
-		/*ft_putchar_fd('a', fd);*/
-	/*	ft_putnbr_fd(0, fd);*/
-	/*}*/
-	/*close(fd);*/
-
-	char s1[] = "Hello";
-	char s2[] = "World";
-	t_list *list1 = ft_lstnew(s1);
-	t_list *list2 = ft_lstnew(s2);
-	t_list *list3 = ft_lstnew("This");
-	ft_lstadd_front(&list1,  list2);
-	ft_lstadd_back(&list1,  list3);
-	// printf("%d --- %d\n", ft_lstsize(list1), ft_lstsize(list2));
-	printf("%s\n", (char *)ft_lstlast(list1)->content);
-	t_list *current = list1;
-	while (current)
-	{
-		printf("%s\n", (char *)current->content);
-		current = current->next;
-	}
-	current = list1;
-	   while (current)
-	   {
-	       t_list *temp = current;
-	       current = current->next;
-	       free(temp);
-	   }
-	return (0);
-}
