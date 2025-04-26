@@ -4,9 +4,9 @@ from dicks import test_cases
 
 def main():
     comparator = LibComparator('../libft/libft.so')
-    comparator.test_all()
-    # func = Functions.STRNSTR
-    # comparator.test_func(func, test_cases[func])
+    # comparator.test_all()
+    func = Functions.ISALNUM
+    comparator.test_func(func, test_cases[func])
 
 if __name__ == "__main__":
     main()
