@@ -51,20 +51,23 @@ int	main(void)
 	char s2[] = "World";
 	t_list *list1 = ft_lstnew(s1);
 	t_list *list2 = ft_lstnew(s2);
+	t_list *list3 = ft_lstnew("This");
 	ft_lstadd_front(&list1,  list2);
-	printf("%d --- %d\n", ft_lstsize(list1), ft_lstsize(list2));
-	// t_list *current = list1;
-	// while (current)
-	// {
-	// 	printf("%s\n", (char *)current->content);
-	// 	current = current->next;
-	// }
-	// current = list1;
-	//    while (current)
-	//    {
-	//        t_list *temp = current;
-	//        current = current->next;
-	//        free(temp);
-	//    }
+	ft_lstadd_back(&list1,  list3);
+	// printf("%d --- %d\n", ft_lstsize(list1), ft_lstsize(list2));
+	printf("%s\n", (char *)ft_lstlast(list1)->content);
+	t_list *current = list1;
+	while (current)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	current = list1;
+	   while (current)
+	   {
+	       t_list *temp = current;
+	       current = current->next;
+	       free(temp);
+	   }
 	return (0);
 }
