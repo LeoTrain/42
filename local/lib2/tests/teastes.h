@@ -31,6 +31,8 @@ void	test_memchr(void);
 void	test_memcmp(void);
 void	test_strnstr(void);
 void	test_atoi(void);
+void	test_calloc(void);
+void	test_strdup(void);
 
 void	print_correct(size_t i);
 void	print_incorrect(size_t i);

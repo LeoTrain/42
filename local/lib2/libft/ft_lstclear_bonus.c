@@ -6,7 +6,7 @@
 /*   By: leberton <leberton@42vienna.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:12:02 by leberton          #+#    #+#             */
-/*   Updated: 2025/04/26 17:16:02 by leberton         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:21:19 by leberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*swap;
-	t_list	*temp;
+	t_list	*current;
+	t_list	*next;
 
-	swap = *lst;
-	while (swap)
+	current = *lst;
+	while (current)
 	{
-		temp = swap->next;
-		del(swap->content);
-		free(swap);
-		swap = temp;
+		next = current->next;
+		del(current->content);
+		free(current);
+		current = next;
 	}
 	*lst = NULL;
 }

@@ -1,0 +1,12 @@
+
+- Norme
+- Pas d'arrets inattendues
+- Pas de leaks (valgrind)
+- Pas de relink dans le Makefile
+- $(NAME), all, clean, fclean, re
+- Regle 'bonus' dans Makefile. -> _bonus.c/.h
+- Pas de fichiers inutilisees
+- Pas de malloc a part dans calloc et strdup
+- Nom des fichiers
+- Nom des fonctions
+- Git 

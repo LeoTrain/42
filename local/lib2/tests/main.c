@@ -44,6 +44,10 @@ int main(void)
 	test_strnstr();
 	print_fname("atoi");
 	test_atoi();
+	print_fname("calloc");
+	test_calloc();
+	print_fname("strdup");
+	test_strdup();
     return (0);
 }
 
