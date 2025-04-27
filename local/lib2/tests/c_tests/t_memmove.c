@@ -10,9 +10,15 @@ void test_memmove() {
         {"Hello", strdup("World"), 5, "Hello"},
         {"World", strdup("Hello"), 3, "Worlo"},
         {"12345", strdup("abcde"), 5, "12345"},
-        {"ft_memmove", strdup("test"), 4, "ft_t"},
-        {"abcdefgh", strdup("abcdefgh"), 5, "abcdeabcdefgh"}, // Overlapping test
-    };
+        {"abcdefgh", strdup("abcdefgh"), 5, "abcdeabcdefgh"},
+        {"", strdup("test"), 1, "\0"},
+        {"test", strdup(""), 4, "test"},
+        {"short", strdup("longer"), 5, "short"},
+        {"overlap", strdup("overlap"), 7, "overlap"},
+        {"12345678", strdup("abcdefgh"), 8, "12345678"},
+        {"12345", strdup("abcde"), 0, ""},
+        {"partial", strdup("overlap"), 3, "par"},
+	};
 
     for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); ++i) {
         ft_memmove(tests[i].dest, tests[i].src, tests[i].size);

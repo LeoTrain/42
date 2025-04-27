@@ -34,6 +34,7 @@ void	test_atoi(void);
 
 void	print_correct(size_t i);
 void	print_incorrect(size_t i);
+void	print_fname(char *name);
 
 
 #endif // !TEASTES_H

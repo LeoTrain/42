@@ -7,10 +7,10 @@ void test_strlcat() {
         size_t size;
         const char *expected;
     } tests[] = {
-        {"World", strdup("Hello"), 10, "HelloWorld"},
-        {"12345", strdup("abcde"), 10, "abcde12345"},
-        {"test", strdup("ft_strlcat"), 15, "ft_strlcat"},
-        {"Hello", strdup("World"), 5, "World"}, // Dest size is less than src size
+        {"World", strdup("Hello"), 11, "HelloWorld"},
+        {"12345", strdup("abcde"), 8, "abcde12"},
+        {"test", strdup("ft_strlcat"), 15, "ft_strlcattest"},
+        {"Hello", strdup("World"), 5, "World"},
     };
 
     for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); ++i) {

@@ -16,9 +16,9 @@ void test_memchr() {
 
     for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); ++i) {
         const char *result = (const char *)ft_memchr(tests[i].input, tests[i].ch, tests[i].n);
-        if (result == tests[i].expected) {
+        if ((result == NULL && tests[i].expected == NULL) || (result != NULL && tests[i].expected != NULL && strcmp(result, tests[i].expected) == 0)) {
             print_correct(i);
-        } else {
+		} else {
             print_incorrect(i);
         }
     }

@@ -10,8 +10,8 @@ void test_strncmp() {
         {"hello", "hello", 5, 0},
         {"hello", "hell", 4, 0},
         {"hello", "hellz", 4, 0},
-        {"hello", "hellz", 5, -1},
-        {"hellz", "hello", 5, 1},
+        {"hello", "hellz", 5, -11},
+        {"hellz", "hello", 5, 11},
         {"", "", 1, 0},
     };
 

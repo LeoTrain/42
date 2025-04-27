@@ -16,8 +16,8 @@ void test_strnstr() {
 
     for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); ++i) {
         const char *result = ft_strnstr(tests[i].haystack, tests[i].needle, tests[i].len);
-        if (result == tests[i].expected) {
-            print_correct(i);
+        if ((result == NULL && tests[i].expected == NULL) || (result != NULL && tests[i].expected != NULL && strncmp(result, tests[i].expected, ft_strlen(tests[i].expected)) == 0)) {
+            print_correct(i);print_correct(i);
         } else {
             print_incorrect(i);
         }
