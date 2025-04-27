@@ -27,7 +27,10 @@ void	*ft_calloc(size_t count, size_t size)
 		total_size = 0;
 	array = malloc(total_size);
 	if (array == NULL)
+	{
+		free(array);
 		return (NULL);
+	}
 	ft_bzero(array, total_size);
 	return (array);
 }
