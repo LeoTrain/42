@@ -7,7 +7,7 @@ all: $(NAME)
 	
 $(NAME):
 	$(MAKE) -C $(LIB_PATH)
-	$(CC) main.c $(LIB) -o $(NAME)
+	$(CC) main.c $(LIB) -I/opt/homebrew/include -L/opt/homebrew/lib -lcriterion -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIB_PATH) clean

@@ -4,7 +4,7 @@ NAME = libftprintf.a
 LIBFT_PATH = ./ft_libft
 LIBFT_A = $(LIBFT_PATH)/libft.a
 LIBFT_SRCS = $(wildcard $(LIBFT_PATH)/*.c)
-SRCS = ft_printf.c
+SRCS = srcs/ft_printf.c srcs/arg_to_str.c srcs/arg_to_ptr.c srcs/arg_to_int.c srcs/arg_to_uint.c srcs/utils.c srcs/arg_to_hexa.c
 OBJS = $(SRCS:.c=.o) $(LIBFT_OBJS)
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 
