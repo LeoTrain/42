@@ -1,6 +1,7 @@
 #include "../ft_libft/libft.h"
 #include "../libftprintf.h"
 #include <stdint.h>
+#include <stdio.h>
 
 static int	run_format_handler(char c, va_list *args)
 {
@@ -19,10 +20,8 @@ static int	run_format_handler(char c, va_list *args)
 		return (arg_to_int(va_arg(*args, int)));
 	else if (c == 'u')
 		return (arg_to_uint(va_arg(*args, unsigned int)));
-	else if (c == 'x')
-		return (arg_to_hexa(va_arg(*args, int), 0));
-	else if (c == 'X')
-		return (arg_to_hexa(va_arg(*args, int), 1));
+	else if (c == 'x' || c == 'X')
+		return (arg_to_hexa(va_arg(*args, int), c == 'X'));
 	return (0);
 }
 

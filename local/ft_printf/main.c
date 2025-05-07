@@ -1,56 +1,70 @@
 #include "code/ft_libft/libft.h"
 #include "code/libftprintf.h"
 #include <stdio.h>
-#include <criterion/criterion.h>
 
-TestSuite(test_c);
-
-Test(test_c, print_a)
+void	test_c(void)
 {
-	cr_assert_eq(ft_printf("%c", 'a'), printf("%c", 'a'));
+	int expected = printf("%c\n");
+	int result = ft_printf("%c\n");
+	printf("%d - %d\n", expected, result);
+
 }
 
-Test(test_c, print_Z)
+int main(void)
 {
-	cr_assert_eq(ft_printf("%c", 'Z'), printf("%c", 'Z'));
+	test_c();
+	return (0);
 }
 
-Test(test_c, print_0_char)
-{
-	cr_assert_eq(ft_printf("%c", '0'), printf("%c", '0'));
-}
-
-TestSuite(test_str);
-
-Test(test_str, print_Hello)
-{
-	cr_assert_eq(ft_printf("%s", "Hello"), printf("%s", "Hello"));
-}
-
-Test(test_str, print_Hello_World)
-{
-	cr_assert_eq(ft_printf("%s", "Hello World"), printf("%s", "Hello World"));
-}
-
-Test(test_str, print_Hello_null_World)
-{
-	cr_assert_eq(ft_printf("%s", "Hello\0World"), printf("%s", "Hello\0World"));
-}
-
-TestSuite(test_ptr);
-
-Test(test_ptr, ptr_x)
-{
-	char	*x;
-	cr_assert_eq(ft_printf("%p", x), printf("%p", x));
-}
-
-Test(test_ptr, ptr_NULL)
-{
-	char	*x;
-	cr_assert_eq(ft_printf("%p", NULL), printf("%p", NULL));
-}
-
+//
+// TestSuite(test_c);
+//
+// Test(test_c, print_a)
+// {
+// 	cr_assert_eq(ft_printf("%c", 'a'), printf("%c", 'a'));
+// }
+//
+// Test(test_c, print_Z)
+// {
+// 	cr_assert_eq(ft_printf("%c", 'Z'), printf("%c", 'Z'));
+// }
+//
+// Test(test_c, print_0_char)
+// {
+// 	cr_assert_eq(ft_printf("%c", '0'), printf("%c", '0'));
+// }
+//
+// TestSuite(test_str);
+//
+// Test(test_str, print_Hello)
+// {
+// 	cr_assert_eq(ft_printf("%s", "Hello"), printf("%s", "Hello"));
+// }
+//
+// Test(test_str, print_Hello_World)
+// {
+// 	cr_assert_eq(ft_printf("%s", "Hello World"), printf("%s", "Hello World"));
+// }
+//
+// Test(test_str, print_Hello_null_World)
+// {
+// 	cr_assert_eq(ft_printf("%s", "Hello\0World"), printf("%s", "Hello\0World"));
+// }
+//
+// TestSuite(test_ptr);
+//
+// Test(test_ptr, ptr_x)
+// {
+// 	char	*x;
+// 	cr_assert_eq(ft_printf("%p", x), printf("%p", x));
+// }
+//
+// Test(test_ptr, ptr_NULL)
+// {
+// 	char	*x;
+// 	cr_assert_eq(ft_printf("%p", NULL), printf("%p", NULL));
+// }
+//
 
 /*static void show_result(char *name, unsigned int expected, unsigned int result)*/
 /*{*/

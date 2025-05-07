@@ -13,15 +13,31 @@ static int	ulong_length(unsigned long long n)
 	return (i);
 }
 
-int	arg_to_ptr(unsigned long long ptr)
+static void ull_to_hexadecimal(unsigned long long n)
+{
+	if (n >= 16)
+	{
+		ull_to_hexadecimal(n / 16);
+		ull_to_hexadecimal(n % 16);
+	}
+	else
+	{
+		if (n > 9)
+			ft_putchar_fd(n - 10 + 'a', 1);
+		else
+			ft_putchar_fd(n + '0', 1);
+	}
+}
+
+int	arg_to_ptr(unsigned long long n)
 {
 
 	ft_putstr_fd("0x", 1);
-	if (ptr == 0)
+	if (n == 0)
 	{
 		ft_putchar_fd('0', 1);
 		return (3);
 	}
-	int_to_hexadecimal(ptr, 0);
-	return (ulong_length(ptr));
+	ull_to_hexadecimal(n);
+	return (ulong_length(n) + 1);
 }

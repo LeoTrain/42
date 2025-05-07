@@ -54,7 +54,7 @@ static char	*copy_str(const char *s, size_t start, size_t end)
 
 static void	free_final(char **final, size_t i)
 {
-	while (i >= 0)
+	while (i > 0)
 	{
 		free(final[i]);
 		i--;
@@ -63,9 +63,9 @@ static void	free_final(char **final, size_t i)
 
 static void	process_str(const char *s, const char c, char **final)
 {
-	unsigned int	start_of_word;
-	unsigned int	i;
-	unsigned int	j;
+	size_t	start_of_word;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;

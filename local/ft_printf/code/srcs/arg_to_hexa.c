@@ -2,6 +2,11 @@
 
 int	arg_to_hexa(int	n, int uppercase)
 {
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
 	int_to_hexadecimal(n, uppercase);
 	return (calculate_int_length(n));
 }

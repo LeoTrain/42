@@ -24,7 +24,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('-', fd);
 	}
 	if (nb > 9)
-		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(nb / 10, fd);
 	c = (nb % 10) + 48;
 	ft_putchar_fd(c, fd);
 }
