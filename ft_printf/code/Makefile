@@ -28,3 +28,5 @@ fclean: clean
 	$(MAKE) -C $(LIBFT_PATH) fclean
 
 re: fclean all
+
+bonus: $(NAME)

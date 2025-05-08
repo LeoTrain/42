@@ -34,10 +34,17 @@ void	uint_to_hex(unsigned int n, int uppercase)
 	}
 }
 
-int	arg_to_hexa(unsigned int n, int uppercase)
+int	arg_to_hexa(unsigned int n, int uppercase, char format)
 {
+	int	len;
+
+	len = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
+	if (format == '#' && !uppercase)
+		len += write(1, "0x", 2); 
+	else if (format == '#' && uppercase)
+		len += write(1, "0X", 2); 
 	uint_to_hex(n, uppercase);
-	return (length(n));
+	return (length(n) + len);
 }

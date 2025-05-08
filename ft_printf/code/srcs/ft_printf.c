@@ -11,22 +11,26 @@ static int	printchar(int c)
 	return (1);
 }
 
-static int	run_format_handler(va_list *args, const char c)
+static int	run_format_handler(va_list *args, const char *c)
 {
-	if (c == '%')
+	if (*c == '%')
 		return (write(1, "%", 1));
-	else if (c == 'c')
+	else if (*c == 'c')
 		return (printchar(va_arg(*args, int)));
-	else if (c == 's')
+	else if (*c == 's')
 		return (arg_to_str(va_arg(*args, char *)));
-	else if (c == 'p')
+	else if (*c == 'p')
 		return (arg_to_ptr(va_arg(*args, unsigned long long)));
-	else if (c == 'd' || c == 'i')
-		return (arg_to_int(va_arg(*args, int)));
-	else if (c == 'u')
+	else if (*c == 'd' || *c == 'i')
+		return (arg_to_int(va_arg(*args, int), 0));
+	else if (*c == 'u')
 		return (arg_to_uint(va_arg(*args, unsigned int)));
-	else if (c == 'x' || c == 'X')
-		return (arg_to_hexa(va_arg(*args, int), c == 'X'));
+	else if (*c == 'x' || *c == 'X')
+		return (arg_to_hexa(va_arg(*args, int), *c == 'X', 0));
+	else if (*c == '+' && (*(c + 1) == 'd' || *(c + 1) == 'i'))
+		return (arg_to_int(va_arg(*args, int), 1));
+	else if (*c == '#' && (*(c + 1) == 'x' || *(c + 1) == 'X'))
+		return (arg_to_hexa(va_arg(*args, int), *(c + 1) == 'X', *c));
 	return (0);
 }
 
@@ -40,7 +44,11 @@ int	ft_printf(const char *s, ...)
 	while(*s)
 	{
 		if (*s == '%')
-			len += run_format_handler(&args, *(++s));
+		{
+			len += run_format_handler(&args, ++s);
+			if (*s == '+' || *s == '#')
+				s++;
+		}
 		else
 			len += printchar(*s);
 		s++;
