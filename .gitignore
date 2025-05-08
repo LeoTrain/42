@@ -55,5 +55,5 @@ dkms.conf
 
 # For printf
 printfTester/
-local/ft_printf/code/ft_libft/
+ft_printf/code/ft_libft/
 
